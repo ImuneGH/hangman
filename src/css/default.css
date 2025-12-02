@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+:root {
+  --bg-color: #f5f5eb;
+  --font-color: #1f2933;
+  --muted-color: #6b7280;
+  --card-bg-color: #ffffff;
+  --accent-color: #d97706;
+  --accent-color-light: #e49a3a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+/* h1,
+h2 {
+  color: var(--font-color);
+  margin: 0.625rem;
+  text-shadow: 2px 2px 2px var(--muted-color);
+  font-size: 2rem;
+}
+
+h3 {
+  color: var(--font-color);
+  margin: 0.625rem;
+  font-size: 1.3rem;
+}
+
+p,
+span {
+  margin: 0.625rem;
+  line-height: 1.3rem;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.wrapper {
+  max-width: 75rem;
+  margin: 0 auto;
+} */
