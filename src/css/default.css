@@ -59,8 +59,3 @@ span {
   text-decoration: none;
   color: var(--font-color);
 }
-
-.wrapper {
-  max-width: 75rem;
-  margin: 0 auto;
-}

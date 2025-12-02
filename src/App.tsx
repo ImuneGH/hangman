@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className="background">
+    <div className="wrapper">
       <h3>ahoj</h3>
       <p>
         ahoj zkouším odsazení a line height
