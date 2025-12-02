@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div className="wrapper">
-      <h3>ahoj</h3>
+      <h3 className="the-word">ahoj jak to jde</h3>
       <p>
         ahoj zkouším odsazení a line height
         <br />
