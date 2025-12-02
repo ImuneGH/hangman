@@ -1,13 +1,16 @@
 import "./css/App.css";
-import Home from "./pages/Home";
-import Result from "./pages/Result";
-import Game from "./pages/Game";
 import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <h1>ahoj</h1>
+    <div className="background">
+      <h3>ahoj</h3>
+      <p>
+        ahoj zkouším odsazení a line height
+        <br />
+        jak to vypadá?
+      </p>
+      <a href="#">zkouška odkazu</a>
       <Outlet />
     </div>
   );

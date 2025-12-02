@@ -34,23 +34,19 @@ select {
 }
 
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Nunito", sans-serif;
   background-color: var(--bg-color);
   color: var(--font-color);
 }
 
-/* h1,
+h1,
 h2 {
-  color: var(--font-color);
   margin: 0.625rem;
   text-shadow: 2px 2px 2px var(--muted-color);
-  font-size: 2rem;
 }
 
 h3 {
-  color: var(--font-color);
   margin: 0.625rem;
-  font-size: 1.3rem;
 }
 
 p,
@@ -67,4 +63,4 @@ span {
 .wrapper {
   max-width: 75rem;
   margin: 0 auto;
-} */
+}
