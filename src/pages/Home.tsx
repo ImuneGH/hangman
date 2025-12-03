@@ -1,7 +1,7 @@
 import "../css/home.css";
 
 const Home = () => {
-  return <></>;
+  return <form className="home-page-form"></form>;
 };
 
 export default Home;
