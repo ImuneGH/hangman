@@ -1,3 +1,5 @@
+import "../css/pages/result.css";
+
 const Result = () => {
   return (
     <>
