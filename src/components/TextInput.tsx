@@ -1,9 +1,10 @@
 import "../css/components/textInput.css";
-import LabelContext from "../context/LabelContext";
-import { useContext } from "react";
 
-const TextInput = () => {
-  const { label } = useContext(LabelContext);
+type TextInputProps = {
+  label: string;
+};
+
+const TextInput = ({ label }: TextInputProps) => {
   return (
     <>
       <label htmlFor="">{label}</label>
