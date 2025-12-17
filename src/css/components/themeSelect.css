@@ -1,4 +1,4 @@
-.theme-radiobutton {
+.theme-radiobuttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem 1.2rem;
@@ -11,6 +11,7 @@
   margin: 0;
   font-size: 1rem;
   font-weight: normal;
+  cursor: default;
 }
 
 .theme-radio-wrapper {

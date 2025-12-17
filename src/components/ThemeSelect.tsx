@@ -4,7 +4,7 @@ const ThemeSelect = () => {
   return (
     <div className="theme-select">
       <h3>Téma</h3>
-      <div className="theme-radiobutton">
+      <div className="theme-radiobuttons">
         <div className="theme-radio-wrapper">
           <input id="theme1" type="radio" name="theme-radio" />
           <label htmlFor="theme1">Téma 1</label>

@@ -1,0 +1,20 @@
+.difficulty-select h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+  cursor: default;
+}
+
+.difficulty-radiobuttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  background-color: var(--card-bg-color);
+  border-radius: 0.3rem;
+  padding: 1.75rem 2.25rem;
+}
+
+.difficulty-radio-wrapper {
+  display: flex;
+  gap: 0.2rem;
+}
