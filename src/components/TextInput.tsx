@@ -7,8 +7,8 @@ type TextInputProps = {
 const TextInput = ({ label }: TextInputProps) => {
   return (
     <div className="text-input">
-      <label htmlFor="">{label}</label>
-      <input type="text" />
+      <label htmlFor="text-input">{label}</label>
+      <input type="text" id="text-input" />
     </div>
   );
 };
