@@ -5,3 +5,11 @@
   max-width: 20rem;
   margin-top: 5rem;
 }
+
+.home-page-form button {
+  border: none;
+  color: var(--card-bg-color);
+  background-color: var(--accent-color);
+  border-radius: 0.3rem;
+  font-size: 1.5rem;
+}
