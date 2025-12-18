@@ -15,7 +15,6 @@ const Game = () => {
 
   return (
     <div className="game-layout">
-      <h1>basdjals</h1>
       <GameInfo />
       <Solution />
       <GuessLetters />
