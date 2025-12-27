@@ -6,4 +6,14 @@
 .text-input input {
   border: none;
   border-radius: 0.3rem;
+  flex: 1;
+}
+
+.guess-word-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.guess-word-container button {
+  padding: 0.2rem 0.5rem;
 }

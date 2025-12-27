@@ -8,7 +8,10 @@ const TextInput = ({ label }: TextInputProps) => {
   return (
     <div className="text-input">
       <label htmlFor="text-input">{label}</label>
-      <input type="text" id="text-input" />
+      <div className="guess-word-container">
+        <input type="text" id="text-input" />
+        {label === "Hádej celé slovo" && <button>Hádej</button>}
+      </div>
     </div>
   );
 };
