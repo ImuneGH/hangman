@@ -7,13 +7,6 @@
   padding: 1.75rem 2.25rem;
 }
 
-.theme-select h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: normal;
-  cursor: default;
-}
-
 .theme-radio-wrapper {
   display: flex;
   gap: 0.2rem;
