@@ -18,3 +18,8 @@
   display: flex;
   gap: 0.2rem;
 }
+
+.theme-radio-wrapper input,
+.theme-radio-wrapper label {
+  cursor: pointer;
+}

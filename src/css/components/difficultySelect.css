@@ -18,3 +18,8 @@
   display: flex;
   gap: 0.2rem;
 }
+
+.difficulty-radio-wrapper input,
+.difficulty-radio-wrapper label {
+  cursor: pointer;
+}
