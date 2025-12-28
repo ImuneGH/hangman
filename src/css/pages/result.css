@@ -1,0 +1,27 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 20rem;
+  margin-top: 5rem;
+}
+
+.result button {
+  flex: 1;
+  padding: 0.2rem 0.5rem;
+  border: none;
+  color: var(--card-bg-color);
+  background-color: var(--accent-color);
+  border-radius: 0.3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.result .play-again-btn {
+  align-self: stretch;
+}
+
+.result .home-btn {
+  background-color: var(--accent-color-light);
+}
