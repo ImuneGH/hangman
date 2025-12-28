@@ -1,4 +1,5 @@
 import "../css/components/gameInfo.css";
+import GallowsImg from "./GallowsImg";
 
 const GameInfo = () => {
   return (
@@ -6,7 +7,9 @@ const GameInfo = () => {
       <span className="nick">Přezdívka: Nick</span>
       <span className="attempts">Počet pokusů: X</span>
       <span className="faults">Počet chyb: Y</span>
-      <div className="hangman-img">vyhrazeno pro šibenici</div>
+      <div className="hangman-img">
+        <GallowsImg />
+      </div>
     </div>
   );
 };
