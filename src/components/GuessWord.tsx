@@ -1,16 +1,13 @@
 import "../css/components/guessWord.css";
 
-type GuessWordProps = {
-  setNickname: (nickname: string) => void;
-  nickname: string;
-};
+// type GuessWordProps = {};
 
-const GuessWord = ({ setNickname, nickname }: GuessWordProps) => {
+const GuessWord = () => {
   return (
     <div className="text-input">
       <label htmlFor="text-input">Hádej celé slovo</label>
       <div className="guess-word-container">
-        <input type="text" id="text-input" onChange={(e) => setNickname(e.target.value)} value={nickname} />
+        <input type="text" id="text-input" />
         <button>Hádej</button>
       </div>
     </div>
