@@ -7,17 +7,24 @@ import type { OutletContextType } from "../types/types";
 import { useEffect } from "react";
 
 const Home = () => {
+  const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("ahoj");
+    console.log(typeof nickname);
+  };
   const { label, setLabel } = useOutletContext<OutletContextType>();
+  const { nickname, setNickname } = useOutletContext<OutletContextType>();
+
   useEffect(() => {
     setLabel("Přezdívka");
   }, []);
 
   return (
     <form className="home-page-form">
-      <TextInput label={label} />
+      <TextInput label={label} setNickname={setNickname} nickname={nickname} />
       <ThemeSelect />
       <DifficultySelect />
-      <button>Hrát</button>
+      <button onClick={createNewGame}>Hrát</button>
     </form>
   );
 };
