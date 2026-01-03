@@ -1,0 +1,13 @@
+.saved-nickname {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.saved-nickname button {
+  padding: 0.2rem 0.6rem;
+  background-color: var(--accent-color-light);
+  font-size: 1.1rem;
+}

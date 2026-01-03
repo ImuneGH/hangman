@@ -5,6 +5,7 @@ import DifficultySelect from "../components/DifficultySelect";
 import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
 import { useEffect, useState } from "react";
+import SavedNickname from "../components/SavedNickname";
 
 const Home = () => {
   const [localStorageNickname, setLocalStorageNickname] = useState(false);
@@ -29,7 +30,7 @@ const Home = () => {
 
   return (
     <form className="home-page-form" onSubmit={createNewGame}>
-      {localStorageNickname ? <div></div> : <NIckNameInput setNickname={setNickname} nickname={nickname} />}
+      {localStorageNickname ? <SavedNickname /> : <NIckNameInput setNickname={setNickname} nickname={nickname} />}
       <ThemeSelect />
       <DifficultySelect />
       <button type="submit">Hrát</button>
