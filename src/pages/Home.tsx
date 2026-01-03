@@ -22,6 +22,7 @@ const Home = () => {
 
     if (localStorageNickname) {
       console.log("je tam nick");
+      changeNicknameActive && localStorage.setItem("nickname", nickname);
     } else {
       localStorage.setItem("nickname", nickname);
       console.log("nebyl tam nick");
