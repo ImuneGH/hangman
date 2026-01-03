@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import SavedNickname from "../components/SavedNickname";
 
 const Home = () => {
+  const [changeNicknameActive, setChangeNicknameActive] = useState<boolean>(false);
   const [localStorageNickname, setLocalStorageNickname] = useState(false);
   const { nickname, setNickname } = useOutletContext<OutletContextType>();
 
@@ -16,7 +17,6 @@ const Home = () => {
       setLocalStorageNickname(true);
     }
   }, []);
-  console.log(localStorageNickname);
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -30,7 +30,11 @@ const Home = () => {
 
   return (
     <form className="home-page-form" onSubmit={createNewGame}>
-      {localStorageNickname ? <SavedNickname /> : <NIckNameInput setNickname={setNickname} nickname={nickname} />}
+      {localStorageNickname && !changeNicknameActive ? (
+        <SavedNickname changeNicknameActive={changeNicknameActive} setChangeNicknameActive={setChangeNicknameActive} />
+      ) : (
+        <NIckNameInput setNickname={setNickname} nickname={nickname} />
+      )}
       <ThemeSelect />
       <DifficultySelect />
       <button type="submit">Hrát</button>

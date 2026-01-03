@@ -2,12 +2,23 @@ import { useOutletContext } from "react-router-dom";
 import "../css/components/savedNickname.css";
 import type { OutletContextType } from "../types/types";
 
-const SavedNickname = () => {
+type SavedNicknameProps = {
+  changeNicknameActive: boolean;
+  setChangeNicknameActive: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const SavedNickname = ({ setChangeNicknameActive, changeNicknameActive }: SavedNicknameProps) => {
   const { savedNickname } = useOutletContext<OutletContextType>();
+
+  console.log(changeNicknameActive);
   return (
     <div className="saved-nickname">
-      <span>Ahoj {savedNickname}, pojď si zahrát oběšence! Stačí vybrat téma, obtížnost a zmáčknout play!</span>
-      <button className="change-nickname">Změň přezdívku</button>
+      {!changeNicknameActive && <span>Ahoj {savedNickname}, pojď si zahrát oběšence! Stačí vybrat téma, obtížnost a zmáčknout play!</span>}
+      {!changeNicknameActive && (
+        <button className="change-nickname" onClick={() => setChangeNicknameActive(true)}>
+          Změň přezdívku
+        </button>
+      )}
     </div>
   );
 };
