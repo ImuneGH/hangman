@@ -1,21 +1,35 @@
 import "../css/pages/home.css";
-import TextInput from "../components/NicknameInput";
+import NIckNameInput from "../components/NicknameInput";
 import ThemeSelect from "../components/ThemeSelect";
 import DifficultySelect from "../components/DifficultySelect";
 import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  const [localStorageNickname, setLocalStorageNickname] = useState(false);
+  const { nickname, setNickname } = useOutletContext<OutletContextType>();
+
+  useEffect(() => {
+    if (localStorage.getItem("nickname")) {
+      setLocalStorageNickname(true);
+    }
+  }, []);
+  console.log(localStorageNickname);
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("ahoj");
-    console.log(nickname);
+
+    if (localStorageNickname) {
+      console.log("je tam nick");
+    } else {
+      localStorage.setItem("nickname", nickname);
+      console.log("nebyl tam nick");
+    }
   };
-  const { nickname, setNickname } = useOutletContext<OutletContextType>();
 
   return (
     <form className="home-page-form" onSubmit={createNewGame}>
-      <TextInput setNickname={setNickname} nickname={nickname} />
+      {localStorageNickname ? <div></div> : <NIckNameInput setNickname={setNickname} nickname={nickname} />}
       <ThemeSelect />
       <DifficultySelect />
       <button type="submit">Hrát</button>
