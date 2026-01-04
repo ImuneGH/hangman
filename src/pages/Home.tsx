@@ -19,9 +19,9 @@ const Home = () => {
       setLocalStorageNickname(true);
     }
   }, []);
+
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (localStorageNickname) {
       console.log("je tam nick");
       changeNicknameActive && localStorage.setItem("nickname", nickname);
@@ -34,12 +34,12 @@ const Home = () => {
   return (
     <form className="home-page-form" onSubmit={createNewGame}>
       {localStorageNickname && !changeNicknameActive ? (
-        <SavedNickname changeNicknameActive={changeNicknameActive} setChangeNicknameActive={setChangeNicknameActive} />
+        <SavedNickname changeNicknameActive={changeNicknameActive} setConfirmModalActive={setConfirmModalActive} />
       ) : (
         <NIckNameInput setNickname={setNickname} nickname={nickname} />
       )}
       <ThemeSelect />
-      {confirmModalActive && <ConfirmationModal />}
+      {confirmModalActive && <ConfirmationModal setChangeNicknameActive={setChangeNicknameActive} setConfirmModalActive={setConfirmModalActive} />}
       <DifficultySelect />
       <button type="submit">Hrát</button>
     </form>
