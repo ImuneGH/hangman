@@ -6,11 +6,13 @@ import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
 import { useEffect, useState } from "react";
 import SavedNickname from "../components/SavedNickname";
+import ConfirmationModal from "../components/ConfirmationModal";
 
 const Home = () => {
   const [changeNicknameActive, setChangeNicknameActive] = useState<boolean>(false);
-  const [localStorageNickname, setLocalStorageNickname] = useState(false);
+  const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
   const { nickname, setNickname } = useOutletContext<OutletContextType>();
+  const [confirmModalActive, setConfirmModalActive] = useState<boolean>(false);
 
   useEffect(() => {
     if (localStorage.getItem("nickname")) {
@@ -37,6 +39,7 @@ const Home = () => {
         <NIckNameInput setNickname={setNickname} nickname={nickname} />
       )}
       <ThemeSelect />
+      {confirmModalActive && <ConfirmationModal />}
       <DifficultySelect />
       <button type="submit">Hrát</button>
     </form>
