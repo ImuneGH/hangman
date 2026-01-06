@@ -1,13 +1,34 @@
 import type React from "react";
 import "../css/components/confirmationModal.css";
 import { FocusTrap } from "focus-trap-react";
+import { useEffect } from "react";
 
 type ConfirmationModalProps = {
   setConfirmModalActive: React.Dispatch<React.SetStateAction<boolean>>;
   setChangeNicknameActive: React.Dispatch<React.SetStateAction<boolean>>;
+  confirmModalActive: boolean;
 };
 
-const ConfirmationModal = ({ setConfirmModalActive, setChangeNicknameActive }: ConfirmationModalProps) => {
+const ConfirmationModal = ({ setConfirmModalActive, setChangeNicknameActive, confirmModalActive }: ConfirmationModalProps) => {
+  const confirmNickChange = () => {
+    setChangeNicknameActive(true);
+    setConfirmModalActive(false);
+  };
+
+  const modalShortcuts = (e: KeyboardEvent) => {
+    e.key === "Escape" && setConfirmModalActive(false);
+    e.key === "Enter" && confirmNickChange();
+  };
+
+  useEffect(() => {
+    if (confirmModalActive) {
+      document.addEventListener("keyup", modalShortcuts);
+      return () => {
+        document.removeEventListener("keyup", modalShortcuts);
+      };
+    }
+  }, [confirmModalActive]);
+
   return (
     <FocusTrap focusTrapOptions={{ escapeDeactivates: false }}>
       <div className="confirmation-modal">
@@ -16,13 +37,7 @@ const ConfirmationModal = ({ setConfirmModalActive, setChangeNicknameActive }: C
           <button className="cancel-button" onClick={() => setConfirmModalActive(false)}>
             Zrušit
           </button>
-          <button
-            className="confirm-button"
-            onClick={() => {
-              setChangeNicknameActive(true);
-              setConfirmModalActive(false);
-            }}
-          >
+          <button className="confirm-button" onClick={confirmNickChange}>
             Potvrdit
           </button>
         </div>

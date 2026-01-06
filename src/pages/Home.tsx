@@ -39,7 +39,7 @@ const Home = () => {
         <NIckNameInput setNickname={setNickname} nickname={nickname} />
       )}
       <ThemeSelect />
-      {confirmModalActive && <ConfirmationModal setChangeNicknameActive={setChangeNicknameActive} setConfirmModalActive={setConfirmModalActive} />}
+      {confirmModalActive && <ConfirmationModal setChangeNicknameActive={setChangeNicknameActive} setConfirmModalActive={setConfirmModalActive} confirmModalActive={confirmModalActive} />}
       <DifficultySelect />
       <button type="submit">Hrát</button>
     </form>
