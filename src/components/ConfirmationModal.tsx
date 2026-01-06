@@ -22,9 +22,9 @@ const ConfirmationModal = ({ setConfirmModalActive, setChangeNicknameActive, con
 
   useEffect(() => {
     if (confirmModalActive) {
-      document.addEventListener("keyup", modalShortcuts);
+      document.addEventListener("keydown", modalShortcuts);
       return () => {
-        document.removeEventListener("keyup", modalShortcuts);
+        document.removeEventListener("keydown", modalShortcuts);
       };
     }
   }, [confirmModalActive]);

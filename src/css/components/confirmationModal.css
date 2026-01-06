@@ -31,3 +31,8 @@
 .button-container .cancel-button {
   background-color: var(--accent-color-light);
 }
+
+.cancel-button:focus-visible,
+.confirm-button:focus-visible {
+  outline: none;
+}
