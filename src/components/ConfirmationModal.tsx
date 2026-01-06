@@ -3,7 +3,6 @@ import "../css/components/confirmationModal.css";
 import { FocusTrap } from "focus-trap-react";
 
 type ConfirmationModalProps = {
-  confirmationModalMessage: string;
   setConfirmModalActive: React.Dispatch<React.SetStateAction<boolean>>;
   setChangeNicknameActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
