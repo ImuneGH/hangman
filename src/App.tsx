@@ -26,7 +26,6 @@ function App() {
         throw new Error("Chyba fetche");
       }
       const words = await response.json();
-
       setGameWords(words);
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -38,10 +37,6 @@ function App() {
   useEffect(() => {
     fetchGameWords();
   }, []);
-
-  setTimeout(() => {
-    console.log(gameWords);
-  }, 500);
 
   const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
   const [nickname, setNickname] = useState<string>("");
