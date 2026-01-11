@@ -13,8 +13,8 @@ const Home = () => {
   const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
   const [confirmModalActive, setConfirmModalActive] = useState<boolean>(false);
   const { nickname, setNickname } = useOutletContext<OutletContextType>();
-  const { theme, setTheme } = useOutletContext<OutletContextType>();
-  const { difficulty, setDifficulty } = useOutletContext<OutletContextType>();
+  const { setTheme } = useOutletContext<OutletContextType>();
+  const { setDifficulty } = useOutletContext<OutletContextType>();
 
   useEffect(() => {
     if (localStorage.getItem("nickname")) {
