@@ -1,55 +1,45 @@
 import "../css/components/themeSelect.css";
 import RadioButton from "./RadioButton";
+import type { RadioButtonInputs } from "../types/types";
 
 type ThemeSelectProps = {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 };
 
-type Input = {
-  name: string;
-  value: string;
-};
-
-type RadioButtonInputs = [Input, Input, Input, Input, Input, Input];
-
 const ThemeSelect = ({ setTheme }: ThemeSelectProps) => {
-  const radioButtonInputs: RadioButtonInputs = [
+  const radioButtonThemes: RadioButtonInputs = [
     {
-      name: "Zeměpis",
+      content: "Zeměpis",
       value: "geography",
     },
     {
-      name: "Zvířata",
+      content: "Zvířata",
       value: "animals",
     },
     {
-      name: "Jídlo",
+      content: "Jídlo",
       value: "food",
     },
     {
-      name: "Sport",
+      content: "Sport",
       value: "sport",
     },
     {
-      name: "Programování",
+      content: "Programování",
       value: "programming",
     },
     {
-      name: "Povolání",
+      content: "Povolání",
       value: "profession",
     },
   ];
-
-  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.value);
-  };
 
   return (
     <div className="theme-select">
       <h3>Téma</h3>
       <div className="theme-radiobuttons">
-        {radioButtonInputs.map((value) => (
-          <RadioButton key={value.value} inputValue={value.value} themeName={value.name} handleSelect={handleSelect} />
+        {radioButtonThemes.map((theme) => (
+          <RadioButton key={theme.value} inputValue={theme.value} inputContent={theme.content} inputName="theme-radio" handleSelect={(value) => setTheme(value)} />
         ))}
       </div>
     </div>

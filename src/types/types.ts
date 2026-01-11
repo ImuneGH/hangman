@@ -5,6 +5,13 @@ export type OutletContextType = {
   setSavedNickname: React.Dispatch<React.SetStateAction<string>>;
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
-  difficulty: "easy" | "medium" | "hard";
-  setDifficulty: React.Dispatch<React.SetStateAction<"easy" | "medium" | "hard">>;
+  difficulty: string;
+  setDifficulty: React.Dispatch<React.SetStateAction<string>>;
 };
+
+type Input = {
+  content: string;
+  value: string;
+};
+
+export type RadioButtonInputs = Input[];
