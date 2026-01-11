@@ -7,13 +7,3 @@
   padding: 1.75rem 1rem;
   font-size: 0.9rem;
 }
-
-.theme-radio-wrapper {
-  display: flex;
-  gap: 0.2rem;
-}
-
-.theme-radio-wrapper input,
-.theme-radio-wrapper label {
-  cursor: pointer;
-}
