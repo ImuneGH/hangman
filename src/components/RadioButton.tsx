@@ -3,13 +3,13 @@ import "../css/components/radioButton.css";
 type RadioButtonProps = {
   inputValue: string;
   themeName: string;
-  handleThemeSelect: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSelect: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const RadioButton = ({ inputValue, themeName, handleThemeSelect }: RadioButtonProps) => {
+const RadioButton = ({ inputValue, themeName, handleSelect }: RadioButtonProps) => {
   return (
     <div className="theme-radio-wrapper">
-      <input onChange={handleThemeSelect} id={inputValue} type="radio" name="theme-radio" value={inputValue} />
+      <input onChange={handleSelect} id={inputValue} type="radio" name="theme-radio" value={inputValue} />
       <label htmlFor={inputValue}>{themeName}</label>
     </div>
   );

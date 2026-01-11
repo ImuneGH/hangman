@@ -5,11 +5,42 @@ type ThemeSelectProps = {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const ThemeSelect = ({ setTheme }: ThemeSelectProps) => {
-  const inputValue: string[] = ["geography", "animals", "food", "sport", "programming", "profession"];
-  const themeName: string[] = ["Zeměpis", "Zvířata", "Jídlo", "Sport", "Programování", "Povolání"];
+type Input = {
+  name: string;
+  value: string;
+};
 
-  const handleThemeSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+type RadioButtonInputs = [Input, Input, Input, Input, Input, Input];
+
+const ThemeSelect = ({ setTheme }: ThemeSelectProps) => {
+  const radioButtonInputs: RadioButtonInputs = [
+    {
+      name: "Zeměpis",
+      value: "geography",
+    },
+    {
+      name: "Zvířata",
+      value: "animals",
+    },
+    {
+      name: "Jídlo",
+      value: "food",
+    },
+    {
+      name: "Sport",
+      value: "sport",
+    },
+    {
+      name: "Programování",
+      value: "programming",
+    },
+    {
+      name: "Povolání",
+      value: "profession",
+    },
+  ];
+
+  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTheme(e.target.value);
   };
 
@@ -17,8 +48,8 @@ const ThemeSelect = ({ setTheme }: ThemeSelectProps) => {
     <div className="theme-select">
       <h3>Téma</h3>
       <div className="theme-radiobuttons">
-        {inputValue.map((value, index) => (
-          <RadioButton key={value} inputValue={value} themeName={themeName[index]} handleThemeSelect={handleThemeSelect} />
+        {radioButtonInputs.map((value) => (
+          <RadioButton key={value.value} inputValue={value.value} themeName={value.name} handleSelect={handleSelect} />
         ))}
       </div>
     </div>
