@@ -6,28 +6,28 @@ const ThemeSelect = () => {
       <h3>Téma</h3>
       <div className="theme-radiobuttons">
         <div className="theme-radio-wrapper">
-          <input id="theme1" type="radio" name="theme-radio" />
-          <label htmlFor="theme1">Téma 1</label>
+          <input id="geography" type="radio" name="theme-radio" />
+          <label htmlFor="geography">Zeměpis</label>
         </div>
         <div className="theme-radio-wrapper">
-          <input id="theme2" type="radio" name="theme-radio" />
-          <label htmlFor="theme2">Téma 2</label>
+          <input id="animals" type="radio" name="theme-radio" />
+          <label htmlFor="animals">Zvířata</label>
         </div>
         <div className="theme-radio-wrapper">
-          <input id="theme3" type="radio" name="theme-radio" />
-          <label htmlFor="theme3">Téma 3</label>
+          <input id="food" type="radio" name="theme-radio" />
+          <label htmlFor="food">Jídlo</label>
         </div>
         <div className="theme-radio-wrapper">
-          <input id="theme4" type="radio" name="theme-radio" />
-          <label htmlFor="theme4">Téma 4</label>
+          <input id="sport" type="radio" name="theme-radio" />
+          <label htmlFor="sport">Sport</label>
         </div>
         <div className="theme-radio-wrapper">
-          <input id="theme5" type="radio" name="theme-radio" />
-          <label htmlFor="theme5">Téma 5</label>
+          <input id="programming" type="radio" name="theme-radio" />
+          <label htmlFor="programming">Programování</label>
         </div>
         <div className="theme-radio-wrapper">
-          <input id="theme6" type="radio" name="theme-radio" />
-          <label htmlFor="theme6">Téma 6</label>
+          <input id="profession" type="radio" name="theme-radio" />
+          <label htmlFor="profession">Povolání</label>
         </div>
       </div>
     </div>

@@ -18,6 +18,10 @@ type GameWords = {
 
 function App() {
   const [gameWords, setGameWords] = useState<GameWords | null>(null);
+  const [theme, setTheme] = useState<null | string>(null);
+  const [difficulty, setDifficulty] = useState<null | "easy" | "medium" | "hard">(null);
+  const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
+  const [nickname, setNickname] = useState<string>("");
 
   const fetchGameWords = async () => {
     try {
@@ -38,11 +42,9 @@ function App() {
     fetchGameWords();
   }, []);
 
-  const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
-  const [nickname, setNickname] = useState<string>("");
   return (
     <div className="wrapper">
-      <Outlet context={{ nickname, setNickname, savedNickname, setSavedNickname }} />
+      <Outlet context={{ nickname, setNickname, savedNickname, setSavedNickname, theme, setTheme, difficulty, setDifficulty, gameWords }} />
     </div>
   );
 }

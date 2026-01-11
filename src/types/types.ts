@@ -3,4 +3,6 @@ export type OutletContextType = {
   setNickname: React.Dispatch<React.SetStateAction<string>>;
   savedNickname: string | null;
   setSavedNickname: React.Dispatch<React.SetStateAction<string>>;
+  theme: string;
+  difficulty: "easy" | "medium" | "hard";
 };

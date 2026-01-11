@@ -11,8 +11,10 @@ import ConfirmationModal from "../components/ConfirmationModal";
 const Home = () => {
   const [changeNicknameActive, setChangeNicknameActive] = useState<boolean>(false);
   const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
-  const { nickname, setNickname } = useOutletContext<OutletContextType>();
   const [confirmModalActive, setConfirmModalActive] = useState<boolean>(false);
+  const { nickname, setNickname } = useOutletContext<OutletContextType>();
+  const { theme } = useOutletContext<OutletContextType>();
+  const { difficulty } = useOutletContext<OutletContextType>();
 
   useEffect(() => {
     if (localStorage.getItem("nickname")) {
