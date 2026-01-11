@@ -13,8 +13,8 @@ const Home = () => {
   const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
   const [confirmModalActive, setConfirmModalActive] = useState<boolean>(false);
   const { nickname, setNickname } = useOutletContext<OutletContextType>();
-  const { theme } = useOutletContext<OutletContextType>();
-  const { difficulty } = useOutletContext<OutletContextType>();
+  const { theme, setTheme } = useOutletContext<OutletContextType>();
+  const { difficulty, setDifficulty } = useOutletContext<OutletContextType>();
 
   useEffect(() => {
     if (localStorage.getItem("nickname")) {
@@ -40,7 +40,7 @@ const Home = () => {
       ) : (
         <NIckNameInput setNickname={setNickname} nickname={nickname} />
       )}
-      <ThemeSelect />
+      <ThemeSelect theme={theme} setTheme={setTheme} />
       {confirmModalActive && <ConfirmationModal setChangeNicknameActive={setChangeNicknameActive} setConfirmModalActive={setConfirmModalActive} confirmModalActive={confirmModalActive} />}
       <DifficultySelect />
       <button type="submit">Hrát</button>
