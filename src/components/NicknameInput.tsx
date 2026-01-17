@@ -1,4 +1,4 @@
-import { useEffect, type SetStateAction } from "react";
+import { useEffect } from "react";
 import "../css/components/nicknameInput.css";
 
 type NicknameInputProps = {
