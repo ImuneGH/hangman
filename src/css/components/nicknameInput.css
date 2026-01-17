@@ -23,5 +23,5 @@
 }
 
 .text-input .error-border {
-  border: 1px red solid;
+  border: 1px var(--error-color) solid;
 }

@@ -37,9 +37,8 @@ const Home = () => {
         setEmptyInputError((prev) => ({ ...prev, nickname: true }));
         return;
       }
-
-      console.log("log po returnu");
     }
+
     setChangeNicknameActive(false);
   };
 
