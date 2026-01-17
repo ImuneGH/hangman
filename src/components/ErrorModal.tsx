@@ -27,7 +27,7 @@ const ErrorModal = ({ setErrorModalActive, errorModalActive, errorMessage }: Err
       <div className="error-modal">
         <h4 className="message">{errorMessage}</h4>
         <button className="confirm-button" onClick={() => setErrorModalActive(false)}>
-          Potvrdit
+          Rozumím
         </button>
       </div>
     </FocusTrap>

@@ -15,6 +15,7 @@ const Home = () => {
   const [confirmModalActive, setConfirmModalActive] = useState<boolean>(false);
   const [errorModalActive, setErrorModalActive] = useState<boolean>(false);
   const [errorMessage, setErrorMessagae] = useState<string>("");
+  const [emptyInputError, setEmptyInputError] = useState<{ nickname: boolean; theme: boolean; difficulty: boolean }>({ nickname: false, theme: false, difficulty: false });
   const { nickname, setNickname } = useOutletContext<OutletContextType>();
   const { setTheme } = useOutletContext<OutletContextType>();
   const { setDifficulty } = useOutletContext<OutletContextType>();
@@ -33,6 +34,7 @@ const Home = () => {
       } else {
         setErrorMessagae("Zvolte novou přezdívku");
         setErrorModalActive(true);
+        setEmptyInputError((prev) => ({ ...prev, nickname: true }));
         return;
       }
 
@@ -46,7 +48,7 @@ const Home = () => {
       {localStorageNickname && !changeNicknameActive ? (
         <SavedNickname changeNicknameActive={changeNicknameActive} setConfirmModalActive={setConfirmModalActive} />
       ) : (
-        <NIckNameInput setNickname={setNickname} nickname={nickname} />
+        <NIckNameInput setNickname={setNickname} nickname={nickname} emptyInputError={emptyInputError.nickname} setEmptyInputError={setEmptyInputError} />
       )}
       {errorModalActive && <ErrorModal setErrorModalActive={setErrorModalActive} errorModalActive={errorModalActive} errorMessage={errorMessage} />}
       <ThemeSelect setTheme={setTheme} />

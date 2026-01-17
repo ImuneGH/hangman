@@ -1,0 +1,27 @@
+.error-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  position: absolute;
+  left: calc(50vw - 136px);
+  top: 30vh;
+  z-index: 10;
+  min-width: 10rem;
+  min-height: 7rem;
+  padding: 1rem;
+
+  background-color: var(--card-bg-color);
+  border-radius: 5px;
+  border: 1px solid var(--muted-color);
+}
+
+.confirm-button {
+  padding: 0.1rem 0.6rem;
+}
+
+.confirm-button:focus-visible {
+  outline: none;
+}
