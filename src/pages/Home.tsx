@@ -7,11 +7,14 @@ import type { OutletContextType } from "../types/types";
 import { useEffect, useState } from "react";
 import SavedNickname from "../components/SavedNickname";
 import ConfirmationModal from "../components/ConfirmationModal";
+import ErrorModal from "../components/ErrorModal";
 
 const Home = () => {
   const [changeNicknameActive, setChangeNicknameActive] = useState<boolean>(false);
   const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
   const [confirmModalActive, setConfirmModalActive] = useState<boolean>(false);
+  const [errorModalActive, setErrorModalActive] = useState<boolean>(false);
+  const [errorMessage, setErrorMessagae] = useState<string>("");
   const { nickname, setNickname } = useOutletContext<OutletContextType>();
   const { setTheme } = useOutletContext<OutletContextType>();
   const { setDifficulty } = useOutletContext<OutletContextType>();
@@ -24,11 +27,18 @@ const Home = () => {
 
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (localStorageNickname) {
-      changeNicknameActive && localStorage.setItem("nickname", nickname);
-    } else {
-      localStorage.setItem("nickname", nickname);
+    if (!localStorageNickname || changeNicknameActive) {
+      if (nickname) {
+        localStorage.setItem("nickname", nickname);
+      } else {
+        setErrorMessagae("Zvolte novou přezdívku");
+        setErrorModalActive(true);
+        return;
+      }
+
+      console.log("log po returnu");
     }
+    setChangeNicknameActive(false);
   };
 
   return (
@@ -38,6 +48,7 @@ const Home = () => {
       ) : (
         <NIckNameInput setNickname={setNickname} nickname={nickname} />
       )}
+      {errorModalActive && <ErrorModal setErrorModalActive={setErrorModalActive} errorModalActive={errorModalActive} errorMessage={errorMessage} />}
       <ThemeSelect setTheme={setTheme} />
       {confirmModalActive && <ConfirmationModal setChangeNicknameActive={setChangeNicknameActive} setConfirmModalActive={setConfirmModalActive} confirmModalActive={confirmModalActive} />}
       <DifficultySelect setDifficulty={setDifficulty} />
