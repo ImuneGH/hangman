@@ -20,6 +20,9 @@ const Home = () => {
 
   const controlledInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.value !== "") {
+      setInputError((prev) => ({ ...prev, [e.target.name]: false }));
+    }
   };
 
   useEffect(() => {
