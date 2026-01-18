@@ -21,7 +21,3 @@
 .guess-word-container button {
   padding: 0.2rem 0.5rem;
 }
-
-.text-input .error-border {
-  border: 1px var(--error-color) solid;
-}

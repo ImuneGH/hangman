@@ -25,8 +25,20 @@ const Home = () => {
   useEffect(() => {
     if (localStorage.getItem("nickname")) {
       setLocalStorageNickname(true);
+      const nick = localStorage.getItem("nickname");
+      typeof nick === "string" && setFormData((prev) => ({ ...prev, nickname: nick }));
     }
   }, []);
+
+  const formDataValidation = () => {
+    const isEmptyCheck = {
+      nickname: !formData.nickname,
+      theme: !formData.theme,
+      difficulty: !formData.difficulty,
+    };
+    setInputError(isEmptyCheck);
+    console.log(isEmptyCheck);
+  };
 
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +52,7 @@ const Home = () => {
         return;
       }
     }
+    formDataValidation();
 
     setChangeNicknameActive(false);
   };
@@ -52,9 +65,9 @@ const Home = () => {
         <NIckNameInput formData={formData} inputError={inputError.nickname} setInputError={setInputError} controlledInput={controlledInput} />
       )}
       {errorModalActive && <ErrorModal setErrorModalActive={setErrorModalActive} errorModalActive={errorModalActive} errorMessage={errorMessage} />}
-      <ThemeSelect controlledInput={controlledInput} formData={formData} />
+      <ThemeSelect controlledInput={controlledInput} formData={formData} inputError={inputError.theme} />
       {confirmModalActive && <ConfirmationModal setChangeNicknameActive={setChangeNicknameActive} setConfirmModalActive={setConfirmModalActive} confirmModalActive={confirmModalActive} />}
-      <DifficultySelect controlledInput={controlledInput} formData={formData} />
+      <DifficultySelect controlledInput={controlledInput} formData={formData} inputError={inputError.difficulty} />
       <button type="submit">Hrát</button>
     </form>
   );

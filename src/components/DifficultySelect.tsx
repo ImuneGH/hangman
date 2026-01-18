@@ -9,9 +9,10 @@ type DifficultySelectProps = {
     theme: string | null;
     difficulty: string | null;
   };
+  inputError: boolean;
 };
 
-const DifficultySelect = ({ controlledInput, formData }: DifficultySelectProps) => {
+const DifficultySelect = ({ controlledInput, formData, inputError }: DifficultySelectProps) => {
   const radioButtonDifficulty: RadioButtonInputs = [
     {
       content: "Lehká",
@@ -30,7 +31,7 @@ const DifficultySelect = ({ controlledInput, formData }: DifficultySelectProps) 
   return (
     <div className="difficulty-select">
       <h3>Obtížnost</h3>
-      <div className="difficulty-radiobuttons">
+      <div className={inputError ? "difficulty-radiobuttons error-border" : "difficulty-radiobuttons"}>
         {radioButtonDifficulty.map((difficulty) => (
           <RadioButton
             key={difficulty.value}

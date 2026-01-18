@@ -9,9 +9,10 @@ type ThemeSelectProps = {
     theme: string | null;
     difficulty: string | null;
   };
+  inputError: boolean;
 };
 
-const ThemeSelect = ({ controlledInput, formData }: ThemeSelectProps) => {
+const ThemeSelect = ({ controlledInput, formData, inputError }: ThemeSelectProps) => {
   const radioButtonThemes: RadioButtonInputs = [
     {
       content: "Zeměpis",
@@ -42,7 +43,7 @@ const ThemeSelect = ({ controlledInput, formData }: ThemeSelectProps) => {
   return (
     <div className="theme-select">
       <h3>Téma</h3>
-      <div className="theme-radiobuttons">
+      <div className={inputError === true ? "theme-radiobuttons error-border" : "theme-radiobuttons"}>
         {radioButtonThemes.map((theme) => (
           <RadioButton key={theme.value} inputValue={theme.value} inputContent={theme.content} inputName="theme" controlledInput={controlledInput} savedValue={formData.theme} />
         ))}

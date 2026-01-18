@@ -63,3 +63,7 @@ span {
   text-decoration: none;
   color: var(--font-color);
 }
+
+.error-border {
+  border: 1px var(--error-color) solid;
+}
