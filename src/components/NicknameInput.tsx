@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "../css/components/nicknameInput.css";
 
 type NicknameInputProps = {
@@ -12,12 +11,6 @@ type NicknameInputProps = {
 };
 
 const NicknameInput = ({ inputError, formData, controlledInput }: NicknameInputProps) => {
-  // useEffect(() => {
-  //   if (nickname && inputError) {
-  //     setInputError((prev) => ({ ...prev, nickname: false }));
-  //   }
-  // }, [nickname]);
-
   return (
     <div className="text-input">
       <label htmlFor="text-input">Přezdívka</label>
