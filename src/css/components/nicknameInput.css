@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.text-input input {
+.nickname-input {
   border: none;
   border-radius: 0.3rem;
   flex: 1;

@@ -64,6 +64,6 @@ span {
   color: var(--font-color);
 }
 
-.error-border {
+.error-border.error-border {
   border: 1px var(--error-color) solid;
 }

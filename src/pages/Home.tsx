@@ -51,11 +51,9 @@ const Home = () => {
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let isError = formDataValidation();
-    console.log(isError);
     if (isError) {
       return;
     }
-    console.log("ahoj");
     if (changeNicknameActive || !localStorageNickname) {
       localStorage.setItem("nickname", formData.nickname);
     }
@@ -67,7 +65,7 @@ const Home = () => {
       {localStorageNickname && !changeNicknameActive ? (
         <SavedNickname changeNicknameActive={changeNicknameActive} setConfirmModalActive={setConfirmModalActive} />
       ) : (
-        <NIckNameInput formData={formData} inputError={inputError.nickname} setInputError={setInputError} controlledInput={controlledInput} />
+        <NIckNameInput formData={formData} inputError={inputError.nickname} controlledInput={controlledInput} />
       )}
       {errorModalActive && <ErrorModal setErrorModalActive={setErrorModalActive} errorModalActive={errorModalActive} errorMessage={errorMessage} />}
       <ThemeSelect controlledInput={controlledInput} formData={formData} inputError={inputError.theme} />
