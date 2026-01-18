@@ -14,7 +14,7 @@ const SavedNickname = ({ setConfirmModalActive, changeNicknameActive }: SavedNic
     <div className="saved-nickname">
       {!changeNicknameActive && <span>Ahoj {savedNickname}, pojď si zahrát oběšence! Stačí vybrat téma, obtížnost a zmáčknout play!</span>}
       {!changeNicknameActive && (
-        <button className="change-nickname" onClick={() => setConfirmModalActive(true)}>
+        <button type="button" className="change-nickname" onClick={() => setConfirmModalActive(true)}>
           Změň přezdívku
         </button>
       )}

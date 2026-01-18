@@ -37,24 +37,29 @@ const Home = () => {
       difficulty: !formData.difficulty,
     };
     setInputError(isEmptyCheck);
-    console.log(isEmptyCheck);
+    const isError = Object.values(isEmptyCheck).includes(true);
+
+    if (isError) {
+      setErrorModalActive(true);
+      setErrorMessagae("Vyplňte všechny povinná pole");
+      return true;
+    } else {
+      return false;
+    }
   };
 
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!localStorageNickname || changeNicknameActive) {
-      if (formData.nickname) {
-        localStorage.setItem("nickname", formData.nickname);
-      } else {
-        setErrorMessagae("Zvolte novou přezdívku");
-        setErrorModalActive(true);
-        setInputError((prev) => ({ ...prev, nickname: true }));
-        return;
-      }
+    let isError = formDataValidation();
+    console.log(isError);
+    if (isError) {
+      return;
     }
-    formDataValidation();
-
-    setChangeNicknameActive(false);
+    console.log("ahoj");
+    if (changeNicknameActive || !localStorageNickname) {
+      localStorage.setItem("nickname", formData.nickname);
+    }
+    // setChangeNicknameActive(false);
   };
 
   return (
