@@ -3,10 +3,15 @@ import RadioButton from "./RadioButton";
 import type { RadioButtonInputs } from "../types/types";
 
 type ThemeSelectProps = {
-  setTheme: React.Dispatch<React.SetStateAction<string>>;
+  controlledInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  formData: {
+    nickname: string;
+    theme: string | null;
+    difficulty: string | null;
+  };
 };
 
-const ThemeSelect = ({ setTheme }: ThemeSelectProps) => {
+const ThemeSelect = ({ controlledInput, formData }: ThemeSelectProps) => {
   const radioButtonThemes: RadioButtonInputs = [
     {
       content: "Zeměpis",
@@ -39,7 +44,7 @@ const ThemeSelect = ({ setTheme }: ThemeSelectProps) => {
       <h3>Téma</h3>
       <div className="theme-radiobuttons">
         {radioButtonThemes.map((theme) => (
-          <RadioButton key={theme.value} inputValue={theme.value} inputContent={theme.content} inputName="theme-radio" handleSelect={(value) => setTheme(value)} />
+          <RadioButton key={theme.value} inputValue={theme.value} inputContent={theme.content} inputName="theme" controlledInput={controlledInput} savedValue={formData.theme} />
         ))}
       </div>
     </div>

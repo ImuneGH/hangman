@@ -15,10 +15,12 @@ const Home = () => {
   const [confirmModalActive, setConfirmModalActive] = useState<boolean>(false);
   const [errorModalActive, setErrorModalActive] = useState<boolean>(false);
   const [errorMessage, setErrorMessagae] = useState<string>("");
-  const [emptyInputError, setEmptyInputError] = useState<{ nickname: boolean; theme: boolean; difficulty: boolean }>({ nickname: false, theme: false, difficulty: false });
-  const { nickname, setNickname } = useOutletContext<OutletContextType>();
-  const { setTheme } = useOutletContext<OutletContextType>();
-  const { setDifficulty } = useOutletContext<OutletContextType>();
+  const [inputError, setInputError] = useState<{ nickname: boolean; theme: boolean; difficulty: boolean }>({ nickname: false, theme: false, difficulty: false });
+  const { formData, setFormData } = useOutletContext<OutletContextType>();
+
+  const controlledInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   useEffect(() => {
     if (localStorage.getItem("nickname")) {
@@ -29,12 +31,12 @@ const Home = () => {
   const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!localStorageNickname || changeNicknameActive) {
-      if (nickname) {
-        localStorage.setItem("nickname", nickname);
+      if (formData.nickname) {
+        localStorage.setItem("nickname", formData.nickname);
       } else {
         setErrorMessagae("Zvolte novou přezdívku");
         setErrorModalActive(true);
-        setEmptyInputError((prev) => ({ ...prev, nickname: true }));
+        setInputError((prev) => ({ ...prev, nickname: true }));
         return;
       }
     }
@@ -47,12 +49,12 @@ const Home = () => {
       {localStorageNickname && !changeNicknameActive ? (
         <SavedNickname changeNicknameActive={changeNicknameActive} setConfirmModalActive={setConfirmModalActive} />
       ) : (
-        <NIckNameInput setNickname={setNickname} nickname={nickname} emptyInputError={emptyInputError.nickname} setEmptyInputError={setEmptyInputError} />
+        <NIckNameInput formData={formData} inputError={inputError.nickname} setInputError={setInputError} controlledInput={controlledInput} />
       )}
       {errorModalActive && <ErrorModal setErrorModalActive={setErrorModalActive} errorModalActive={errorModalActive} errorMessage={errorMessage} />}
-      <ThemeSelect setTheme={setTheme} />
+      <ThemeSelect controlledInput={controlledInput} formData={formData} />
       {confirmModalActive && <ConfirmationModal setChangeNicknameActive={setChangeNicknameActive} setConfirmModalActive={setConfirmModalActive} confirmModalActive={confirmModalActive} />}
-      <DifficultySelect setDifficulty={setDifficulty} />
+      <DifficultySelect controlledInput={controlledInput} formData={formData} />
       <button type="submit">Hrát</button>
     </form>
   );

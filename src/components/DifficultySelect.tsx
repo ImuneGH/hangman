@@ -3,10 +3,15 @@ import type { RadioButtonInputs } from "../types/types";
 import RadioButton from "./RadioButton";
 
 type DifficultySelectProps = {
-  setDifficulty: React.Dispatch<React.SetStateAction<string>>;
+  controlledInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  formData: {
+    nickname: string;
+    theme: string | null;
+    difficulty: string | null;
+  };
 };
 
-const DifficultySelect = ({ setDifficulty }: DifficultySelectProps) => {
+const DifficultySelect = ({ controlledInput, formData }: DifficultySelectProps) => {
   const radioButtonDifficulty: RadioButtonInputs = [
     {
       content: "Lehká",
@@ -27,7 +32,14 @@ const DifficultySelect = ({ setDifficulty }: DifficultySelectProps) => {
       <h3>Obtížnost</h3>
       <div className="difficulty-radiobuttons">
         {radioButtonDifficulty.map((difficulty) => (
-          <RadioButton key={difficulty.value} inputContent={difficulty.content} inputValue={difficulty.value} inputName="difficulty-radio" handleSelect={(value) => setDifficulty(value)} />
+          <RadioButton
+            key={difficulty.value}
+            inputContent={difficulty.content}
+            inputValue={difficulty.value}
+            inputName="difficulty"
+            controlledInput={controlledInput}
+            savedValue={formData.difficulty}
+          />
         ))}
       </div>
     </div>

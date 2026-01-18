@@ -16,7 +16,14 @@ type GameWords = {
   zvirata: GameCategory;
 };
 
+type FormData = {
+  nickname: string;
+  theme: string | null;
+  difficulty: string | null;
+};
+
 function App() {
+  const [formData, setFormData] = useState<FormData>({ nickname: "", theme: null, difficulty: null });
   const [gameWords, setGameWords] = useState<GameWords | null>(null);
   const [theme, setTheme] = useState<null | string>(null);
   const [difficulty, setDifficulty] = useState<null | "easy" | "medium" | "hard">(null);
@@ -44,7 +51,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <Outlet context={{ nickname, setNickname, savedNickname, setSavedNickname, theme, setTheme, difficulty, setDifficulty, gameWords }} />
+      <Outlet context={{ nickname, setNickname, savedNickname, setSavedNickname, theme, setTheme, difficulty, setDifficulty, gameWords, formData, setFormData }} />
     </div>
   );
 }

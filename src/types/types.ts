@@ -7,6 +7,12 @@ export type OutletContextType = {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
   difficulty: string;
   setDifficulty: React.Dispatch<React.SetStateAction<string>>;
+  formData: {
+    nickname: string;
+    theme: string | null;
+    difficulty: string | null;
+  };
+  setFormData: React.Dispatch<React.SetStateAction<{ nickname: string; theme: string | null; difficulty: string | null }>>;
 };
 
 type Input = {
