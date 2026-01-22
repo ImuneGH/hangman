@@ -1,7 +1,7 @@
 {
-  "zemepis": {
-    "nazev": "Zeměpis",
-    "slova": [
+  "geography": {
+    "theme": "Zeměpis",
+    "words": [
       "pariz",
       "londyn",
       "berlin",
@@ -54,9 +54,9 @@
       "island"
     ]
   },
-  "zvirata": {
-    "nazev": "Zvířata",
-    "slova": [
+  "animals": {
+    "theme": "Zvířata",
+    "words": [
       "pes",
       "kocka",
       "kun",
@@ -109,9 +109,9 @@
       "slimak"
     ]
   },
-  "jidlo": {
-    "nazev": "Jídlo",
-    "slova": [
+  "food": {
+    "theme": "Jídlo",
+    "words": [
       "chleb",
       "rohlik",
       "bulka",
@@ -165,8 +165,8 @@
     ]
   },
   "sport": {
-    "nazev": "Sport",
-    "slova": [
+    "theme": "Sport",
+    "words": [
       "fotbal",
       "hokej",
       "tenis",
@@ -219,9 +219,9 @@
       "medaile"
     ]
   },
-  "programovani": {
-    "nazev": "Programování",
-    "slova": [
+  "programming": {
+    "theme": "Programování",
+    "words": [
       "python",
       "java",
       "javascript",
@@ -274,9 +274,9 @@
       "deploy"
     ]
   },
-  "povolani": {
-    "nazev": "Povolání",
-    "slova": [
+  "profession": {
+    "theme": "Povolání",
+    "words": [
       "lekar",
       "sestra",
       "ucitel",

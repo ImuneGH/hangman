@@ -1,20 +1,7 @@
 import "./css/app.css";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-type GameCategory = {
-  nazev: string;
-  slova: string[];
-};
-
-type GameWords = {
-  jidlo: GameCategory;
-  povolani: GameCategory;
-  programovani: GameCategory;
-  sport: GameCategory;
-  zemepis: GameCategory;
-  zvirata: GameCategory;
-};
+import type { GameData } from "./types/types";
 
 type FormData = {
   nickname: string;
@@ -22,12 +9,18 @@ type FormData = {
   difficulty: string | null;
 };
 
-type GameData = {
-  hiddenWord: string;
-  attempts: number;
-  mistakes: number;
-  letters: string[];
-  status: "inGame" | "victory" | "lose";
+export type GameWords = {
+  food: GameCategory;
+  profession: GameCategory;
+  programming: GameCategory;
+  sport: GameCategory;
+  geography: GameCategory;
+  animals: GameCategory;
+};
+
+type GameCategory = {
+  theme: string;
+  words: string[];
 };
 
 function App() {
@@ -60,13 +53,22 @@ function App() {
     }
   };
 
+  const createHiddenWord = (words: string[]) => {
+    const numberOfWords = words.length;
+    const randomWordNumber = Math.floor(Math.random() * numberOfWords);
+    const randomWord = words[randomWordNumber];
+    return randomWord;
+  };
+
   useEffect(() => {
     fetchGameWords();
   }, []);
 
   return (
     <div className="wrapper">
-      <Outlet context={{ nickname, setNickname, savedNickname, setSavedNickname, theme, setTheme, difficulty, setDifficulty, gameWords, formData, setFormData }} />
+      <Outlet
+        context={{ nickname, setNickname, savedNickname, setSavedNickname, theme, setTheme, difficulty, setDifficulty, gameWords, formData, setFormData, createHiddenWord, setGameData }}
+      />
     </div>
   );
 }

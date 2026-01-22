@@ -16,7 +16,7 @@ const Home = () => {
   const [errorModalActive, setErrorModalActive] = useState<boolean>(false);
   const [errorMessage, setErrorMessagae] = useState<string>("");
   const [inputError, setInputError] = useState<{ nickname: boolean; theme: boolean; difficulty: boolean }>({ nickname: false, theme: false, difficulty: false });
-  const { formData, setFormData } = useOutletContext<OutletContextType>();
+  const { formData, setFormData, setGameData, createHiddenWord, gameWords } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
   const controlledInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +62,11 @@ const Home = () => {
       localStorage.setItem("nickname", formData.nickname);
     }
     setChangeNicknameActive(false);
+    const selectedTheme = formData.theme;
+    if (selectedTheme) {
+      const generatedWord = createHiddenWord(gameWords[selectedTheme as keyof OutletContextType["gameWords"]].words);
+      setGameData((prev) => ({ ...prev, hiddenWord: generatedWord }));
+    }
     navigate("/Game");
   };
 

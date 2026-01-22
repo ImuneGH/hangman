@@ -13,6 +13,16 @@ export type OutletContextType = {
     difficulty: string | null;
   };
   setFormData: React.Dispatch<React.SetStateAction<{ nickname: string; theme: string | null; difficulty: string | null }>>;
+  createHiddenWord: (word: string[]) => string;
+  setGameData: React.Dispatch<React.SetStateAction<GameData>>;
+  gameWords: {
+    food: GameCategory;
+    profession: GameCategory;
+    programming: GameCategory;
+    sport: GameCategory;
+    geography: GameCategory;
+    animals: GameCategory;
+  };
 };
 
 type Input = {
@@ -21,3 +31,16 @@ type Input = {
 };
 
 export type RadioButtonInputs = Input[];
+
+export type GameData = {
+  hiddenWord: string;
+  attempts: number;
+  mistakes: number;
+  letters: string[];
+  status: "inGame" | "victory" | "lose";
+};
+
+type GameCategory = {
+  theme: string;
+  words: string[];
+};
