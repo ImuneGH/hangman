@@ -2,7 +2,7 @@ import "../css/pages/home.css";
 import NIckNameInput from "../components/NicknameInput";
 import ThemeSelect from "../components/ThemeSelect";
 import DifficultySelect from "../components/DifficultySelect";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
 import { useEffect, useState } from "react";
 import SavedNickname from "../components/SavedNickname";
@@ -17,6 +17,7 @@ const Home = () => {
   const [errorMessage, setErrorMessagae] = useState<string>("");
   const [inputError, setInputError] = useState<{ nickname: boolean; theme: boolean; difficulty: boolean }>({ nickname: false, theme: false, difficulty: false });
   const { formData, setFormData } = useOutletContext<OutletContextType>();
+  const navigate = useNavigate();
 
   const controlledInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -60,7 +61,8 @@ const Home = () => {
     if (changeNicknameActive || !localStorageNickname) {
       localStorage.setItem("nickname", formData.nickname);
     }
-    // setChangeNicknameActive(false);
+    setChangeNicknameActive(false);
+    navigate("/Game");
   };
 
   return (
