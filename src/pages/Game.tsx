@@ -13,7 +13,7 @@ const Game = () => {
       <GameInfo />
       <Solution guessedLetters={guessedLetters} />
       <GuessLetters setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
-      <GuessWord />
+      <GuessWord setGuessedLetters={setGuessedLetters} />
     </div>
   );
 };
