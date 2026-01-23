@@ -13,9 +13,10 @@ const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) 
   const letterClicked = (letter: string) => {
     if (!guessedLetters.includes(letter)) {
       setGuessedLetters((prev) => [...prev, letter]);
+      gameData.attempts++;
+      !gameData.hiddenWord.includes(letter) && gameData.mistakes++;
     }
     console.log(gameData.hiddenWord);
-    // console.log();
   };
 
   return (
