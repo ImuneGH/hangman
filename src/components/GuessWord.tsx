@@ -5,12 +5,11 @@ import { useState } from "react";
 
 type GuessWordProps = {
   setGuessedLetters: React.Dispatch<React.SetStateAction<string[]>>;
-  guessedLetters: string[];
 };
 
-const GuessWord = ({ setGuessedLetters, guessedLetters }: GuessWordProps) => {
+const GuessWord = ({ setGuessedLetters }: GuessWordProps) => {
   const [handleWord, setHandleWord] = useState<string>("");
-  const { gameData, setGameData } = useOutletContext<OutletContextType>();
+  const { gameData } = useOutletContext<OutletContextType>();
 
   const guessWholeWord = () => {
     const formattedWord = handleWord
@@ -22,7 +21,7 @@ const GuessWord = ({ setGuessedLetters, guessedLetters }: GuessWordProps) => {
       setGuessedLetters(victoryLetters);
     }
   };
-  console.log(gameData.hiddenWord);
+
   return (
     <div className="guess-word">
       <label htmlFor="guess-word">Hádej celé slovo</label>
