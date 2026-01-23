@@ -16,7 +16,6 @@ const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) 
       gameData.attempts++;
       !gameData.hiddenWord.includes(letter) && gameData.mistakes++;
     }
-    console.log(gameData.hiddenWord);
   };
 
   return (
