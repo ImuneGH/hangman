@@ -13,7 +13,10 @@ const GuessWord = ({ setGuessedLetters, guessedLetters }: GuessWordProps) => {
   const { gameData, setGameData } = useOutletContext<OutletContextType>();
 
   const guessWholeWord = () => {
-    const formattedWord = handleWord.toLowerCase();
+    const formattedWord = handleWord
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
     if (formattedWord === gameData.hiddenWord) {
       const victoryLetters = formattedWord.split("");
       setGuessedLetters(victoryLetters);
