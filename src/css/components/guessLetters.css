@@ -12,7 +12,21 @@
   font-family: "Gloria Hallelujah", cursive;
 }
 
-.letter {
+.guess-letters .letter {
   letter-spacing: 1px;
   padding: 0.4rem;
+
+  color: var(--font-color);
+  background-color: unset;
+  border-radius: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.guess-letters .guessed-letter {
+  color: var(--muted-color);
+}
+
+.guess-letters .correct-letter {
+  color: var(--accent-color);
 }

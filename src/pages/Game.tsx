@@ -9,13 +9,13 @@ import { useState } from "react";
 
 const Game = () => {
   // const { formData } = useOutletContext<OutletContextType>();
-  const [guessedLetters, setGuessedLetters] = useState<Array<string>>([]);
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   return (
     <div className="game-layout">
       <GameInfo />
       <Solution />
-      <GuessLetters />
+      <GuessLetters setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
       <GuessWord />
     </div>
   );
