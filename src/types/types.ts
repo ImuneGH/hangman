@@ -23,6 +23,13 @@ export type OutletContextType = {
     geography: GameCategory;
     animals: GameCategory;
   };
+  gameData: {
+    hiddenWord: string;
+    attempts: number;
+    mistakes: number;
+    letters: string[];
+    status: "inGame" | "victory" | "lose";
+  };
 };
 
 type Input = {
@@ -32,15 +39,15 @@ type Input = {
 
 export type RadioButtonInputs = Input[];
 
+type GameCategory = {
+  theme: string;
+  words: string[];
+};
+
 export type GameData = {
   hiddenWord: string;
   attempts: number;
   mistakes: number;
   letters: string[];
   status: "inGame" | "victory" | "lose";
-};
-
-type GameCategory = {
-  theme: string;
-  words: string[];
 };

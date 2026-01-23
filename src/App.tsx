@@ -9,7 +9,7 @@ type FormData = {
   difficulty: string | null;
 };
 
-export type GameWords = {
+type GameWords = {
   food: GameCategory;
   profession: GameCategory;
   programming: GameCategory;
@@ -67,7 +67,22 @@ function App() {
   return (
     <div className="wrapper">
       <Outlet
-        context={{ nickname, setNickname, savedNickname, setSavedNickname, theme, setTheme, difficulty, setDifficulty, gameWords, formData, setFormData, createHiddenWord, setGameData }}
+        context={{
+          nickname,
+          setNickname,
+          savedNickname,
+          setSavedNickname,
+          theme,
+          setTheme,
+          difficulty,
+          setDifficulty,
+          gameWords,
+          formData,
+          setFormData,
+          createHiddenWord,
+          setGameData,
+          gameData,
+        }}
       />
     </div>
   );

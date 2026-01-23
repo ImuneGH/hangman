@@ -4,13 +4,13 @@ import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
 
 const GameInfo = () => {
-  const { formData } = useOutletContext<OutletContextType>();
+  const { formData, gameData } = useOutletContext<OutletContextType>();
 
   return (
     <div className="game-info">
       <span className="nick">Přezdívka: {formData.nickname}</span>
-      <span className="attempts">Počet pokusů: X</span>
-      <span className="faults">Počet chyb: Y</span>
+      <span className="attempts">Počet pokusů: {gameData.attempts}</span>
+      <span className="faults">Počet chyb: {gameData.mistakes}</span>
       <div className="hangman-img">
         <GallowsImg />
       </div>
