@@ -1,0 +1,9 @@
+.guess-word-input {
+  border: none;
+  border-radius: 0.3rem;
+  flex: 1;
+}
+
+.guess-word-input:focus-visible {
+  outline: none;
+}
