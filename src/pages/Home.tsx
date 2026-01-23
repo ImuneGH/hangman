@@ -67,6 +67,7 @@ const Home = () => {
       const generatedWord = createHiddenWord(gameWords[selectedTheme as keyof OutletContextType["gameWords"]].words);
       setGameData((prev) => ({ ...prev, hiddenWord: generatedWord }));
     }
+    setGameData((prev) => ({ ...prev, attempts: 0, mistakes: 0 }));
     navigate("/Game");
   };
 

@@ -11,7 +11,7 @@ const Game = () => {
   return (
     <div className="game-layout">
       <GameInfo />
-      <Solution />
+      <Solution guessedLetters={guessedLetters} />
       <GuessLetters setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
       <GuessWord />
     </div>
