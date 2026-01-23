@@ -1,10 +1,17 @@
+import { useOutletContext } from "react-router-dom";
 import "../css/components/guessLetters.css";
+import type { OutletContextType } from "../types/types";
 
 const GuessLetters = () => {
+  const { gameData } = useOutletContext<OutletContextType>();
   return (
     <div className="guess-letters">
       <h3>Hádej písmena</h3>
-      <div className="letters">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
+      <div className="letters">
+        {gameData.letters.map((letter) => (
+          <span className="letter">{letter}</span>
+        ))}
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   padding: 0.5rem;
   text-align: center;
@@ -9,4 +10,9 @@
   background-color: var(--card-bg-color);
   border-radius: 0.3rem;
   font-family: "Gloria Hallelujah", cursive;
+}
+
+.letter {
+  letter-spacing: 1px;
+  padding: 0.4rem;
 }
