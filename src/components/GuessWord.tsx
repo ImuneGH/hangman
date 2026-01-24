@@ -27,7 +27,7 @@ const GuessWord = ({ setGuessedLetters }: GuessWordProps) => {
     <div className="guess-word">
       <label htmlFor="guess-word">Hádej celé slovo</label>
       <div className="guess-word-container">
-        <input type="text" id="guess-word" className="guess-word-input" value={handleWord} onChange={(e) => setHandleWord(e.target.value)} />
+        <input autoComplete="off" type="text" id="guess-word" className="guess-word-input" value={handleWord} onChange={(e) => setHandleWord(e.target.value)} />
         <button onClick={guessWholeWord}>Hádej</button>
       </div>
     </div>

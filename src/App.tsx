@@ -125,7 +125,7 @@ function App() {
       return false;
     }
   };
-  console.log(formData);
+
   useEffect(() => {
     fetchGameWords();
   }, []);
