@@ -48,13 +48,13 @@ const GallowsImg = ({ guessedLetters }: GallowsImgProps) => {
   return (
     <svg viewBox="0 0 80 80" width="80" height="80">
       {gallowsProgress > 0 && <Base />}
-      {gallowsProgress > 0 && <Pole />}
-      {gallowsProgress > 0 && <Beam />}
-      {gallowsProgress > 0 && <Rope />}
-      {gallowsProgress > 0 && <Head />}
-      {gallowsProgress > 0 && <Body />}
-      {gallowsProgress > 0 && <Arms />}
-      {gallowsProgress > 0 && <Legs />}
+      {gallowsProgress > 1 && <Pole />}
+      {gallowsProgress > 2 && <Beam />}
+      {gallowsProgress > 3 && <Rope />}
+      {gallowsProgress > 4 && <Head />}
+      {gallowsProgress > 5 && <Body />}
+      {gallowsProgress > 6 && <Arms />}
+      {gallowsProgress > 7 && <Legs />}
     </svg>
   );
 };
