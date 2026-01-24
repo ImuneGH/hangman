@@ -9,7 +9,7 @@ import type { OutletContextType } from "../types/types";
 
 const Game = () => {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-  const { setResultMessage, gameData, setGameData, formData } = useOutletContext<OutletContextType>();
+  const { setResultMessage, gameData, setGameData, formData, maxAttempts } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
   console.log(gameData.hiddenWord);
@@ -18,9 +18,14 @@ const Game = () => {
     const setHiddenWord = new Set(gameData.hiddenWord);
     const arrayHiddenWord = Array.from(setHiddenWord);
     let isVictory = false;
+    let isLose = false;
     isVictory = arrayHiddenWord.every((letter) => guessedLetters.includes(letter));
     if (isVictory) {
       setGameData((prev) => ({ ...prev, status: "victory" }));
+    }
+    isLose = maxAttempts === gameData.mistakes;
+    if (isLose) {
+      setGameData((prev) => ({ ...prev, status: "lose" }));
     }
   }, [guessedLetters]);
 
