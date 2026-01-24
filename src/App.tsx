@@ -34,7 +34,7 @@ function App() {
   });
   const [gameWords, setGameWords] = useState<GameWords | null>(null);
   const [theme, setTheme] = useState<null | string>(null);
-  const [difficulty, setDifficulty] = useState<null | "easy" | "medium" | "hard">(null);
+  const [maxAttempts, setMaxAttempts] = useState<number | null>(null);
   const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
   const [nickname, setNickname] = useState<string>("");
   const [resultMessage, setResultMessage] = useState<string>("");
@@ -76,8 +76,27 @@ function App() {
     if (changeNicknameActive || !localStorageNickname) {
       localStorage.setItem("nickname", formData.nickname);
     }
+    handleDifficulty(formData.difficulty);
     setChangeNicknameActive(false);
     startGame();
+  };
+
+  const handleDifficulty = (difficulty: string | null) => {
+    let numberOfAttempts = 0;
+    switch (difficulty) {
+      case "easy":
+        numberOfAttempts = 8;
+        break;
+      case "medium":
+        numberOfAttempts = 6;
+        break;
+      case "hard":
+        numberOfAttempts = 4;
+        break;
+      default:
+        console.error("No difficulty selected");
+    }
+    setMaxAttempts(numberOfAttempts);
   };
 
   const startGame = () => {
@@ -121,8 +140,8 @@ function App() {
           setSavedNickname,
           theme,
           setTheme,
-          difficulty,
-          setDifficulty,
+          maxAttempts,
+          setMaxAttempts,
           gameWords,
           formData,
           setFormData,

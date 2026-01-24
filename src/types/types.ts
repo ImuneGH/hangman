@@ -5,8 +5,8 @@ export type OutletContextType = {
   setSavedNickname: React.Dispatch<React.SetStateAction<string>>;
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
-  difficulty: string;
-  setDifficulty: React.Dispatch<React.SetStateAction<string>>;
+  maxAttempts: number;
+  setMaxAttempts: React.Dispatch<React.SetStateAction<number>>;
   formData: {
     nickname: string;
     theme: string | null;
