@@ -30,8 +30,18 @@ export type OutletContextType = {
     letters: string[];
     status: "inGame" | "victory" | "lose";
   };
-  setResultMessage: React.Dispatch<React.SetStateAction<string>>;
   resultMessage: string;
+  setResultMessage: React.Dispatch<React.SetStateAction<string>>;
+  inputError: { nickname: boolean; theme: boolean; difficulty: boolean };
+  setInputError: React.Dispatch<React.SetStateAction<{ nickname: boolean; theme: boolean; difficulty: boolean }>>;
+  setLocalStorageNickname: React.Dispatch<React.SetStateAction<boolean>>;
+  createNewGame: (e: React.FormEvent<HTMLFormElement>) => void;
+  localStorageNickname: boolean;
+  changeNicknameActive: boolean;
+  setChangeNicknameActive: React.Dispatch<React.SetStateAction<boolean>>;
+  errorModalActive: boolean;
+  setErrorModalActive: React.Dispatch<React.SetStateAction<boolean>>;
+  errorMessage: string;
 };
 
 type Input = {

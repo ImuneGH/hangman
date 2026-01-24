@@ -1,7 +1,7 @@
 import "./css/app.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import type { GameData } from "./types/types";
+import type { GameData, OutletContextType } from "./types/types";
 
 type FormData = {
   nickname: string;
@@ -38,6 +38,12 @@ function App() {
   const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
   const [nickname, setNickname] = useState<string>("");
   const [resultMessage, setResultMessage] = useState<string>("");
+  const [changeNicknameActive, setChangeNicknameActive] = useState<boolean>(false);
+  const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const [errorModalActive, setErrorModalActive] = useState<boolean>(false);
+  const [errorMessage, setErrorMessagae] = useState<string>("");
+  const [inputError, setInputError] = useState<{ nickname: boolean; theme: boolean; difficulty: boolean }>({ nickname: false, theme: false, difficulty: false });
 
   const fetchGameWords = async () => {
     try {
@@ -61,6 +67,42 @@ function App() {
     return randomWord;
   };
 
+  const createNewGame = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    let isError = formDataValidation();
+    if (isError) {
+      return;
+    }
+    if (changeNicknameActive || !localStorageNickname) {
+      localStorage.setItem("nickname", formData.nickname);
+    }
+    setChangeNicknameActive(false);
+    const selectedTheme = formData.theme;
+    if (selectedTheme && gameWords) {
+      const generatedWord = createHiddenWord(gameWords[selectedTheme as keyof OutletContextType["gameWords"]].words);
+      setGameData((prev) => ({ ...prev, hiddenWord: generatedWord, attempts: 0, mistakes: 0, status: "inGame" }));
+      navigate("/Game");
+    }
+  };
+
+  const formDataValidation = () => {
+    const isEmptyCheck = {
+      nickname: !formData.nickname,
+      theme: !formData.theme,
+      difficulty: !formData.difficulty,
+    };
+    setInputError(isEmptyCheck);
+    const isError = Object.values(isEmptyCheck).includes(true);
+
+    if (isError) {
+      setErrorModalActive(true);
+      setErrorMessagae("Vyplňte všechny povinná pole");
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   useEffect(() => {
     fetchGameWords();
   }, []);
@@ -80,11 +122,21 @@ function App() {
           gameWords,
           formData,
           setFormData,
-          createHiddenWord,
-          setGameData,
           gameData,
-          setResultMessage,
+          setGameData,
           resultMessage,
+          setResultMessage,
+          inputError,
+          setInputError,
+          localStorageNickname,
+          setLocalStorageNickname,
+          changeNicknameActive,
+          setChangeNicknameActive,
+          errorMessage,
+          errorModalActive,
+          setErrorModalActive,
+          createHiddenWord,
+          createNewGame,
         }}
       />
     </div>

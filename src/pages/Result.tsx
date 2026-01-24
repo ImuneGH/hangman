@@ -1,9 +1,16 @@
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "../css/pages/result.css";
 import type { OutletContextType } from "../types/types";
 
 const Result = () => {
-  const { resultMessage, gameData } = useOutletContext<OutletContextType>();
+  const { resultMessage, gameData, setGameData } = useOutletContext<OutletContextType>();
+  const navigete = useNavigate();
+
+  const backToHomepage = () => {
+    setGameData((prev) => ({ ...prev, attempts: 0, mistakes: 0, status: "inGame", hiddenWord: "" }));
+    navigete("/");
+  };
+
   return (
     <div className="result">
       <span className="final-message">{resultMessage}</span>
@@ -11,7 +18,9 @@ const Result = () => {
       <span className="attempts">Počet pokusů: {gameData.attempts}</span>
       <span className="faults">Počet chyb: {gameData.mistakes}</span>
       <button className="play-again-btn">Hraj znovu</button>
-      <button className="home-btn">Vrať se na hlavní stranu</button>
+      <button className="home-btn" onClick={backToHomepage}>
+        Vrať se na hlavní stranu
+      </button>
     </div>
   );
 };
