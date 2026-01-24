@@ -3,7 +3,11 @@ import GallowsImg from "./GallowsImg";
 import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
 
-const GameInfo = () => {
+type GameInfoProps = {
+  guessedLetters: string[];
+};
+
+const GameInfo = ({ guessedLetters }: GameInfoProps) => {
   const { formData, gameData } = useOutletContext<OutletContextType>();
 
   return (
@@ -12,7 +16,7 @@ const GameInfo = () => {
       <span className="attempts">Počet pokusů: {gameData.attempts}</span>
       <span className="faults">Počet chyb: {gameData.mistakes}</span>
       <div className="hangman-img">
-        <GallowsImg />
+        <GallowsImg guessedLetters={guessedLetters} />
       </div>
     </div>
   );
