@@ -26,9 +26,10 @@ const Game = () => {
 
   useEffect(() => {
     if (gameData.status === "victory") {
-      navigate("/Result");
       setResultMessage(`Gratuluji ${formData.nickname}! Vyhrál(a) jsi!`);
+      navigate("/Result");
     } else if (gameData.status === "lose") {
+      setResultMessage(`Tentokrát to nevyšlo ${formData.nickname}, budu držet palce příští hru!`);
       navigate("/Result");
     }
   }, [gameData.status]);
