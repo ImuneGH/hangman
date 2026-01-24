@@ -12,8 +12,6 @@ const Game = () => {
   const { setResultMessage, gameData, setGameData, formData, maxAttempts } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
-  console.log(gameData.hiddenWord);
-
   useEffect(() => {
     const setHiddenWord = new Set(gameData.hiddenWord);
     const arrayHiddenWord = Array.from(setHiddenWord);
