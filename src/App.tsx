@@ -37,6 +37,7 @@ function App() {
   const [difficulty, setDifficulty] = useState<null | "easy" | "medium" | "hard">(null);
   const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
   const [nickname, setNickname] = useState<string>("");
+  const [resultMessage, setResultMessage] = useState<string>("");
 
   const fetchGameWords = async () => {
     try {
@@ -82,6 +83,8 @@ function App() {
           createHiddenWord,
           setGameData,
           gameData,
+          setResultMessage,
+          resultMessage,
         }}
       />
     </div>

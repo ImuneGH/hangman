@@ -30,6 +30,8 @@ export type OutletContextType = {
     letters: string[];
     status: "inGame" | "victory" | "lose";
   };
+  setResultMessage: React.Dispatch<React.SetStateAction<string>>;
+  resultMessage: string;
 };
 
 type Input = {

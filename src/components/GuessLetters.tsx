@@ -9,7 +9,7 @@ type GuessLettersProps = {
 };
 
 const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) => {
-  const { gameData } = useOutletContext<OutletContextType>();
+  const { gameData, setGameData } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
   const letterClicked = (letter: string) => {
@@ -26,12 +26,17 @@ const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) 
     let isVictory = false;
     isVictory = arrayHiddenWord.every((letter) => guessedLetters.includes(letter));
     if (isVictory) {
+      setGameData((prev) => ({ ...prev, status: "victory" }));
+    }
+  }, [guessedLetters]);
+
+  useEffect(() => {
+    if (gameData.status === "victory") {
+      navigate("/Result");
+    } else if (gameData.status === "lose") {
       navigate("/Result");
     }
-    // console.log(guessedLetters);
-    // console.log(isVictory);
-    // console.log(arrayHiddenWord);
-  }, [guessedLetters]);
+  }, [gameData.status]);
 
   return (
     <div className="guess-letters">
