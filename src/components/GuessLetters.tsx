@@ -1,7 +1,6 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import "../css/components/guessLetters.css";
 import type { OutletContextType } from "../types/types";
-import { useEffect } from "react";
 
 type GuessLettersProps = {
   setGuessedLetters: React.Dispatch<React.SetStateAction<string[]>>;
@@ -9,8 +8,7 @@ type GuessLettersProps = {
 };
 
 const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) => {
-  const { gameData, setGameData } = useOutletContext<OutletContextType>();
-  const navigate = useNavigate();
+  const { gameData } = useOutletContext<OutletContextType>();
 
   const letterClicked = (letter: string) => {
     if (!guessedLetters.includes(letter)) {
@@ -19,24 +17,6 @@ const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) 
       !gameData.hiddenWord.includes(letter) && gameData.mistakes++;
     }
   };
-
-  useEffect(() => {
-    const setHiddenWord = new Set(gameData.hiddenWord);
-    const arrayHiddenWord = Array.from(setHiddenWord);
-    let isVictory = false;
-    isVictory = arrayHiddenWord.every((letter) => guessedLetters.includes(letter));
-    if (isVictory) {
-      setGameData((prev) => ({ ...prev, status: "victory" }));
-    }
-  }, [guessedLetters]);
-
-  useEffect(() => {
-    if (gameData.status === "victory") {
-      navigate("/Result");
-    } else if (gameData.status === "lose") {
-      navigate("/Result");
-    }
-  }, [gameData.status]);
 
   return (
     <div className="guess-letters">
