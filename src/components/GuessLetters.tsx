@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import "../css/components/guessLetters.css";
 import type { OutletContextType } from "../types/types";
+import { useEffect } from "react";
 
 type GuessLettersProps = {
   setGuessedLetters: React.Dispatch<React.SetStateAction<string[]>>;
@@ -17,6 +18,16 @@ const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) 
       !gameData.hiddenWord.includes(letter) && gameData.mistakes++;
     }
   };
+
+  useEffect(() => {
+    const setHiddenWord = new Set(gameData.hiddenWord);
+    const arrayHiddenWord = Array.from(setHiddenWord);
+    let isVictory = false;
+    isVictory = arrayHiddenWord.every((letter) => guessedLetters.includes(letter));
+    // console.log(guessedLetters);
+    // console.log(isVictory);
+    // console.log(arrayHiddenWord);
+  }, [guessedLetters]);
 
   return (
     <div className="guess-letters">
