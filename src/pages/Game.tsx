@@ -9,7 +9,7 @@ import type { OutletContextType } from "../types/types";
 
 const Game = () => {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-  const { setResultMessage, gameData, setGameData } = useOutletContext<OutletContextType>();
+  const { setResultMessage, gameData, setGameData, formData } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const Game = () => {
   useEffect(() => {
     if (gameData.status === "victory") {
       navigate("/Result");
+      setResultMessage(`Gratuluji ${formData.nickname}! Vyhrál(a) jsi! Tajenka byla: ${gameData.hiddenWord}`);
     } else if (gameData.status === "lose") {
       navigate("/Result");
     }
