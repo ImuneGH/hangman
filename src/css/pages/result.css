@@ -7,8 +7,13 @@
   margin-top: 5rem;
 }
 
+.final-message {
+  text-align: center;
+}
+
 .result button {
   flex: 1;
+  align-self: stretch;
   padding: 0.2rem 0.5rem;
   border: none;
   color: var(--card-bg-color);

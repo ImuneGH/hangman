@@ -25,7 +25,7 @@ const Game = () => {
   useEffect(() => {
     if (gameData.status === "victory") {
       navigate("/Result");
-      setResultMessage(`Gratuluji ${formData.nickname}! Vyhrál(a) jsi! Tajenka byla: ${gameData.hiddenWord}`);
+      setResultMessage(`Gratuluji ${formData.nickname}! Vyhrál(a) jsi!`);
     } else if (gameData.status === "lose") {
       navigate("/Result");
     }
