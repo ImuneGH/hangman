@@ -8,13 +8,13 @@ type GuessLettersProps = {
 };
 
 const GuessLetters = ({ setGuessedLetters, guessedLetters }: GuessLettersProps) => {
-  const { gameData } = useOutletContext<OutletContextType>();
+  const { gameData, setGameData } = useOutletContext<OutletContextType>();
 
   const letterClicked = (letter: string) => {
     if (!guessedLetters.includes(letter)) {
       setGuessedLetters((prev) => [...prev, letter]);
-      gameData.attempts++;
-      !gameData.hiddenWord.includes(letter) && gameData.mistakes++;
+      setGameData((prev) => ({ ...prev, attempts: prev.attempts + 1 }));
+      !gameData.hiddenWord.includes(letter) && setGameData((prev) => ({ ...prev, mistakes: prev.mistakes + 1 }));
     }
   };
 
