@@ -7,7 +7,6 @@ const Result = () => {
   const navigete = useNavigate();
 
   const backToHomepage = () => {
-    setGameData((prev) => ({ ...prev, attempts: 0, mistakes: 0, status: "inGame", hiddenWord: "" }));
     navigete("/");
   };
 
