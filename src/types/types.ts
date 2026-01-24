@@ -42,6 +42,7 @@ export type OutletContextType = {
   errorModalActive: boolean;
   setErrorModalActive: React.Dispatch<React.SetStateAction<boolean>>;
   errorMessage: string;
+  startGame: () => void;
 };
 
 type Input = {

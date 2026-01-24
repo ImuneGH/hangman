@@ -77,6 +77,10 @@ function App() {
       localStorage.setItem("nickname", formData.nickname);
     }
     setChangeNicknameActive(false);
+    startGame();
+  };
+
+  const startGame = () => {
     const selectedTheme = formData.theme;
     if (selectedTheme && gameWords) {
       const generatedWord = createHiddenWord(gameWords[selectedTheme as keyof OutletContextType["gameWords"]].words);
@@ -102,7 +106,7 @@ function App() {
       return false;
     }
   };
-
+  console.log(formData);
   useEffect(() => {
     fetchGameWords();
   }, []);
@@ -137,6 +141,7 @@ function App() {
           setErrorModalActive,
           createHiddenWord,
           createNewGame,
+          startGame,
         }}
       />
     </div>
