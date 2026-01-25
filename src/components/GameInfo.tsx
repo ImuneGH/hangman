@@ -13,6 +13,8 @@ const GameInfo = ({ guessedLetters }: GameInfoProps) => {
   return (
     <div className="game-info">
       <span className="nick">Přezdívka: {formData.nickname}</span>
+      <span className="ingame-theme">Téma: {formData.theme}</span>
+      <span className="ingame-difficulty">Obtížnost: {formData.difficulty}</span>
       <span className="attempts">Počet pokusů: {gameData.attempts}</span>
       <span className="faults">Počet chyb: {gameData.mistakes}</span>
       <div className="hangman-img">

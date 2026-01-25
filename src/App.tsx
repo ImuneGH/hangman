@@ -33,7 +33,6 @@ function App() {
     status: "inGame",
   });
   const [gameWords, setGameWords] = useState<GameWords | null>(null);
-  const [theme, setTheme] = useState<null | string>(null);
   const [maxAttempts, setMaxAttempts] = useState<number | null>(null);
   const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
   const [nickname, setNickname] = useState<string>("");
@@ -83,15 +82,19 @@ function App() {
 
   const handleDifficulty = (difficulty: string | null) => {
     let numberOfAttempts = 0;
+    let difficultyText = "";
     switch (difficulty) {
       case "easy":
         numberOfAttempts = 8;
+        difficultyText = "Lehká";
         break;
       case "medium":
         numberOfAttempts = 6;
+        difficultyText = "Střední";
         break;
       case "hard":
         numberOfAttempts = 4;
+        difficultyText = "Těžká";
         break;
       default:
         console.error("No difficulty selected");
@@ -138,8 +141,6 @@ function App() {
           setNickname,
           savedNickname,
           setSavedNickname,
-          theme,
-          setTheme,
           maxAttempts,
           setMaxAttempts,
           gameWords,
