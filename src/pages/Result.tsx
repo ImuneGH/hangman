@@ -1,9 +1,11 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 import "../css/pages/result.css";
 import type { OutletContextType } from "../types/types";
+import { difficultyLabel } from "../constants/difficultyLabels";
+import { themeLabel } from "../constants/themeLabels";
 
 const Result = () => {
-  const { resultMessage, gameData, startGame } = useOutletContext<OutletContextType>();
+  const { resultMessage, gameData, startGame, formData } = useOutletContext<OutletContextType>();
   const navigete = useNavigate();
 
   const backToHomepage = () => {
@@ -13,7 +15,11 @@ const Result = () => {
   return (
     <div className="result">
       <span className="final-message">{resultMessage}</span>
-      <span className="final-word">Tajenka: {gameData.hiddenWord}</span>
+      <span className="final-word">
+        Tajenka: <strong>{gameData.hiddenWord}</strong>
+      </span>
+      <span className="result-theme">Téma: {themeLabel[formData.theme]}</span>
+      <span className="result-difficulty">Obtížnost: {difficultyLabel[formData.difficulty]}</span>
       <span className="attempts">Počet pokusů: {gameData.attempts}</span>
       <span className="faults">Počet chyb: {gameData.mistakes}</span>
       <button className="play-again-btn" onClick={startGame}>
