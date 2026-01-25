@@ -15,5 +15,14 @@
   height: 5rem;
   grid-column: 2 / 2;
   grid-row: 1 / 4;
-  justify-self: end;
+  justify-self: center;
+}
+
+.game-info .faults,
+.game-info .attempts {
+  margin: 1rem 0;
+}
+
+.game-info .faults {
+  justify-self: center;
 }
