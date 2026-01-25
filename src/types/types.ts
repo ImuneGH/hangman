@@ -9,8 +9,8 @@ export type OutletContextType = {
   setMaxAttempts: React.Dispatch<React.SetStateAction<number>>;
   formData: {
     nickname: string;
-    theme: string | null;
-    difficulty: string | null;
+    theme: "geography" | "animals" | "food" | "sport" | "programming" | "profession";
+    difficulty: "easy" | "medium" | "hard";
   };
   setFormData: React.Dispatch<React.SetStateAction<{ nickname: string; theme: string | null; difficulty: string | null }>>;
   createHiddenWord: (word: string[]) => string;
@@ -64,3 +64,6 @@ export type GameData = {
   letters: string[];
   status: "inGame" | "victory" | "lose";
 };
+
+export type Difficulty = "easy" | "medium" | "hard";
+export type Theme = "geography" | "animals" | "food" | "sport" | "programming" | "profession";

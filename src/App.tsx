@@ -6,7 +6,7 @@ import type { GameData, OutletContextType } from "./types/types";
 type FormData = {
   nickname: string;
   theme: string | null;
-  difficulty: string | null;
+  difficulty: "easy" | "medium" | "hard" | null;
 };
 
 type GameWords = {
