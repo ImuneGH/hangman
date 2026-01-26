@@ -35,7 +35,6 @@ function App() {
   const [gameWords, setGameWords] = useState<GameWords | null>(null);
   const [maxAttempts, setMaxAttempts] = useState<number | null>(null);
   const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
-  const [nickname, setNickname] = useState<string>("");
   const [resultMessage, setResultMessage] = useState<string>("");
   const [changeNicknameActive, setChangeNicknameActive] = useState<boolean>(false);
   const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
@@ -133,8 +132,6 @@ function App() {
     <div className="wrapper">
       <Outlet
         context={{
-          nickname,
-          setNickname,
           savedNickname,
           setSavedNickname,
           maxAttempts,
