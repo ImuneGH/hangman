@@ -1,6 +1,4 @@
 export type OutletContextType = {
-  savedNickname: string | null;
-  setSavedNickname: React.Dispatch<React.SetStateAction<string>>;
   maxAttempts: number;
   setMaxAttempts: React.Dispatch<React.SetStateAction<number>>;
   formData: {

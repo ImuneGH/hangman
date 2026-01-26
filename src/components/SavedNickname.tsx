@@ -8,11 +8,11 @@ type SavedNicknameProps = {
 };
 
 const SavedNickname = ({ setConfirmModalActive, changeNicknameActive }: SavedNicknameProps) => {
-  const { savedNickname } = useOutletContext<OutletContextType>();
+  const { formData } = useOutletContext<OutletContextType>();
 
   return (
     <div className="saved-nickname">
-      {!changeNicknameActive && <span>Ahoj {savedNickname}, pojď si zahrát oběšence! Stačí vybrat téma, obtížnost a zmáčknout play!</span>}
+      {!changeNicknameActive && <span>Ahoj {formData.nickname}, pojď si zahrát oběšence! Stačí vybrat téma, obtížnost a zmáčknout play!</span>}
       {!changeNicknameActive && (
         <button type="button" className="change-nickname" onClick={() => setConfirmModalActive(true)}>
           Změň přezdívku

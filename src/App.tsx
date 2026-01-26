@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { GameData, OutletContextType } from "./types/types";
 
 type FormData = {
-  nickname: string;
+  nickname: string | null;
   theme: string | null;
   difficulty: "easy" | "medium" | "hard" | null;
 };
@@ -24,7 +24,7 @@ type GameCategory = {
 };
 
 function App() {
-  const [formData, setFormData] = useState<FormData>({ nickname: "", theme: null, difficulty: null });
+  const [formData, setFormData] = useState<FormData>({ nickname: localStorage.getItem("nickname"), theme: null, difficulty: null });
   const [gameData, setGameData] = useState<GameData>({
     hiddenWord: "",
     attempts: 0,
@@ -34,7 +34,6 @@ function App() {
   });
   const [gameWords, setGameWords] = useState<GameWords | null>(null);
   const [maxAttempts, setMaxAttempts] = useState<number | null>(null);
-  const [savedNickname, setSavedNickname] = useState<string | null>(localStorage.getItem("nickname"));
   const [resultMessage, setResultMessage] = useState<string>("");
   const [changeNicknameActive, setChangeNicknameActive] = useState<boolean>(false);
   const [localStorageNickname, setLocalStorageNickname] = useState<boolean>(false);
@@ -72,8 +71,7 @@ function App() {
       return;
     }
     if (changeNicknameActive || !localStorageNickname) {
-      localStorage.setItem("nickname", formData.nickname);
-      setSavedNickname(formData.nickname);
+      formData.nickname && localStorage.setItem("nickname", formData.nickname);
     }
     handleDifficulty(formData.difficulty);
     setChangeNicknameActive(false);
@@ -133,8 +131,6 @@ function App() {
     <div className="wrapper">
       <Outlet
         context={{
-          savedNickname,
-          setSavedNickname,
           maxAttempts,
           setMaxAttempts,
           gameWords,
