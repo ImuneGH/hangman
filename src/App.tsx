@@ -81,20 +81,16 @@ function App() {
   };
 
   const handleDifficulty = (difficulty: string | null) => {
-    let numberOfAttempts = 0;
-    let difficultyText = "";
+    let numberOfAttempts: number = 0;
     switch (difficulty) {
       case "easy":
         numberOfAttempts = 8;
-        difficultyText = "Lehká";
         break;
       case "medium":
         numberOfAttempts = 6;
-        difficultyText = "Střední";
         break;
       case "hard":
         numberOfAttempts = 4;
-        difficultyText = "Těžká";
         break;
       default:
         console.error("No difficulty selected");
