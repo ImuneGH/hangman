@@ -73,6 +73,7 @@ function App() {
     }
     if (changeNicknameActive || !localStorageNickname) {
       localStorage.setItem("nickname", formData.nickname);
+      setSavedNickname(formData.nickname);
     }
     handleDifficulty(formData.difficulty);
     setChangeNicknameActive(false);
