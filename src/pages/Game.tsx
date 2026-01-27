@@ -4,13 +4,17 @@ import Solution from "../components/Solution";
 import GuessLetters from "../components/GuessLetters";
 import GuessWord from "../components/GuessWord";
 import { useState, useEffect } from "react";
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { Navigate, useOutletContext, useNavigate } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
 
 const Game = () => {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const { setResultMessage, gameData, setGameData, formData, maxAttempts } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
+
+  if (!gameData.hiddenWord) {
+    return <Navigate to="/" replace />;
+  }
 
   const formatWord = (word: string) => {
     return word

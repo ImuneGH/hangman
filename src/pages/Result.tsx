@@ -1,4 +1,4 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { Navigate, useNavigate, useOutletContext } from "react-router-dom";
 import "../css/pages/result.css";
 import type { OutletContextType } from "../types/types";
 import { difficultyLabel } from "../constants/difficultyLabels";
@@ -7,6 +7,10 @@ import { themeLabel } from "../constants/themeLabels";
 const Result = () => {
   const { resultMessage, gameData, startGame, formData } = useOutletContext<OutletContextType>();
   const navigete = useNavigate();
+
+  if (!gameData.hiddenWord) {
+    return <Navigate to="/" replace />;
+  }
 
   const backToHomepage = () => {
     navigete("/");
