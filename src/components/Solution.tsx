@@ -4,9 +4,10 @@ import type { OutletContextType } from "../types/types";
 
 type SolutionProps = {
   guessedLetters: string[];
+  formatWord: (word: string) => string;
 };
 
-const Solution = ({ guessedLetters }: SolutionProps) => {
+const Solution = ({ guessedLetters, formatWord }: SolutionProps) => {
   const { gameData } = useOutletContext<OutletContextType>();
   return (
     <div className="solution">
@@ -14,7 +15,7 @@ const Solution = ({ guessedLetters }: SolutionProps) => {
       <div className="the-word">
         {gameData.hiddenWord.split("").map((letter, i) => (
           <span className="hidden-letter" key={i}>
-            {guessedLetters.includes(letter) ? letter : "_"}
+            {guessedLetters.includes(formatWord(letter)) ? letter : "_"}
           </span>
         ))}
       </div>

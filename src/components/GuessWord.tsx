@@ -5,17 +5,15 @@ import { useState } from "react";
 
 type GuessWordProps = {
   setGuessedLetters: React.Dispatch<React.SetStateAction<string[]>>;
+  formatWord: (word: string) => string;
 };
 
-const GuessWord = ({ setGuessedLetters }: GuessWordProps) => {
+const GuessWord = ({ setGuessedLetters, formatWord }: GuessWordProps) => {
   const [handleWord, setHandleWord] = useState<string>("");
   const { gameData, setGameData } = useOutletContext<OutletContextType>();
 
   const guessWholeWord = () => {
-    const formattedWord = handleWord
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
+    const formattedWord = formatWord(handleWord);
     setGameData((prev) => ({ ...prev, attempts: prev.attempts + 1 }));
     if (formattedWord === gameData.hiddenWord) {
       const victoryLetters = formattedWord.split("");

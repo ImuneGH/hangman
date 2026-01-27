@@ -12,8 +12,16 @@ const Game = () => {
   const { setResultMessage, gameData, setGameData, formData, maxAttempts } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
+  const formatWord = (word: string) => {
+    return word
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  };
+
   useEffect(() => {
-    const setHiddenWord = new Set(gameData.hiddenWord);
+    const formattedHiddenWord: string = formatWord(gameData.hiddenWord);
+    const setHiddenWord = new Set(formattedHiddenWord);
     const arrayHiddenWord = Array.from(setHiddenWord);
     let isVictory = false;
     let isLose = false;
@@ -40,9 +48,9 @@ const Game = () => {
   return (
     <div className="game-layout">
       <GameInfo guessedLetters={guessedLetters} />
-      <Solution guessedLetters={guessedLetters} />
+      <Solution formatWord={formatWord} guessedLetters={guessedLetters} />
       <GuessLetters setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
-      <GuessWord setGuessedLetters={setGuessedLetters} />
+      <GuessWord formatWord={formatWord} setGuessedLetters={setGuessedLetters} />
     </div>
   );
 };
