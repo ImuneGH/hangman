@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 
 type GallowsImgProps = {
   guessedLetters: string[];
+  setAnimationCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 type HasAnimated = {
@@ -18,7 +19,7 @@ type HasAnimated = {
   legs: boolean;
 };
 
-const GallowsImg = ({ guessedLetters }: GallowsImgProps) => {
+const GallowsImg = ({ guessedLetters, setAnimationCompleted }: GallowsImgProps) => {
   const { maxAttempts, gameData } = useOutletContext<OutletContextType>();
   const [gallowsProgress, setGallowsProgress] = useState<number>(0);
   const hasAnimated = useRef<HasAnimated>({
@@ -226,6 +227,7 @@ const GallowsImg = ({ guessedLetters }: GallowsImgProps) => {
           stroke="black"
           strokeWidth="2"
           onAnimationStart={() => (hasAnimated.current.legs = true)}
+          onAnimationComplete={() => setAnimationCompleted(true)}
           strokeDasharray={hasAnimated.current.legs ? 0 : 10}
           strokeDashoffset={hasAnimated.current.legs ? 0 : 10}
         />

@@ -7,9 +7,10 @@ import { themeLabel } from "../constants/themeLabels";
 
 type GameInfoProps = {
   guessedLetters: string[];
+  setAnimationCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const GameInfo = ({ guessedLetters }: GameInfoProps) => {
+const GameInfo = ({ guessedLetters, setAnimationCompleted }: GameInfoProps) => {
   const { formData, gameData } = useOutletContext<OutletContextType>();
 
   return (
@@ -20,7 +21,7 @@ const GameInfo = ({ guessedLetters }: GameInfoProps) => {
       <span className="attempts">Počet pokusů: {gameData.attempts}</span>
       <span className="faults">Počet chyb: {gameData.mistakes}</span>
       <div className="hangman-img">
-        <GallowsImg guessedLetters={guessedLetters} />
+        <GallowsImg guessedLetters={guessedLetters} setAnimationCompleted={setAnimationCompleted} />
       </div>
     </div>
   );

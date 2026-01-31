@@ -11,6 +11,7 @@ const Game = () => {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const { setResultMessage, gameData, setGameData, formData, maxAttempts } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
+  const [animationCompleted, setAnimationCompleted] = useState<boolean>(false);
 
   if (!gameData.hiddenWord) {
     return <Navigate to="/" replace />;
@@ -33,11 +34,11 @@ const Game = () => {
     if (isVictory) {
       setGameData((prev) => ({ ...prev, status: "victory" }));
     }
-    isLose = maxAttempts === gameData.mistakes;
+    isLose = maxAttempts === gameData.mistakes && animationCompleted;
     if (isLose) {
       setGameData((prev) => ({ ...prev, status: "lose" }));
     }
-  }, [guessedLetters]);
+  }, [guessedLetters, animationCompleted]);
 
   useEffect(() => {
     if (gameData.status === "victory") {
@@ -51,9 +52,9 @@ const Game = () => {
 
   return (
     <div className="game-layout">
-      <GameInfo guessedLetters={guessedLetters} />
+      <GameInfo guessedLetters={guessedLetters} setAnimationCompleted={setAnimationCompleted} />
       <Solution formatWord={formatWord} guessedLetters={guessedLetters} />
-      <GuessLetters setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
+      <GuessLetters formatWord={formatWord} setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
       <GuessWord formatWord={formatWord} setGuessedLetters={setGuessedLetters} />
     </div>
   );
