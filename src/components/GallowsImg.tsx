@@ -7,10 +7,21 @@ type GallowsImgProps = {
   guessedLetters: string[];
 };
 
+type HasAnimated = {
+  base: boolean;
+  pole: boolean;
+  beam: boolean;
+  rope: boolean;
+  head: boolean;
+  body: boolean;
+  arms: boolean;
+  legs: boolean;
+};
+
 const GallowsImg = ({ guessedLetters }: GallowsImgProps) => {
   const { maxAttempts, gameData } = useOutletContext<OutletContextType>();
   const [gallowsProgress, setGallowsProgress] = useState<number>(0);
-  const hasAnimated = useRef({
+  const hasAnimated = useRef<HasAnimated>({
     base: false,
     pole: false,
     beam: false,
@@ -27,7 +38,7 @@ const GallowsImg = ({ guessedLetters }: GallowsImgProps) => {
     },
     end: {
       transition: {
-        duration: 1.5,
+        duration: 1,
       },
       strokeDashoffset: 0,
       opacity: 1,
