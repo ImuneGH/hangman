@@ -27,7 +27,7 @@ const GuessLetters = ({ setGuessedLetters, guessedLetters, formatWord }: GuessLe
         {gameData.letters.map((letter: string) => (
           <button
             key={letter}
-            className={!guessedLetters.includes(letter) ? "letter" : gameData.hiddenWord.includes(letter) ? "correct-letter letter" : "guessed-letter letter"}
+            className={!guessedLetters.includes(letter) ? "letter" : formatWord(gameData.hiddenWord).includes(letter) ? "correct-letter letter" : "guessed-letter letter"}
             onClick={() => letterClicked(letter)}
           >
             {letter}
