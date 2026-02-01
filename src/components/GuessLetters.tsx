@@ -6,13 +6,14 @@ type GuessLettersProps = {
   setGuessedLetters: React.Dispatch<React.SetStateAction<string[]>>;
   guessedLetters: string[];
   formatWord: (word: string) => string;
+  gallowsProgress: number;
 };
 
-const GuessLetters = ({ setGuessedLetters, guessedLetters, formatWord }: GuessLettersProps) => {
+const GuessLetters = ({ setGuessedLetters, guessedLetters, formatWord, gallowsProgress }: GuessLettersProps) => {
   const { gameData, setGameData } = useOutletContext<OutletContextType>();
 
   const letterClicked = (letter: string) => {
-    if (!guessedLetters.includes(letter)) {
+    if (!guessedLetters.includes(letter) && gallowsProgress <= 7) {
       const hiddenWord = formatWord(gameData.hiddenWord);
       setGuessedLetters((prev) => [...prev, letter]);
       setGameData((prev) => ({ ...prev, attempts: prev.attempts + 1 }));

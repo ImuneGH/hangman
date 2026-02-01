@@ -12,6 +12,7 @@ const Game = () => {
   const { setResultMessage, gameData, setGameData, formData, maxAttempts } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
   const [animationCompleted, setAnimationCompleted] = useState<boolean>(false);
+  const [gallowsProgress, setGallowsProgress] = useState<number>(0);
 
   if (!gameData.hiddenWord) {
     return <Navigate to="/" replace />;
@@ -31,30 +32,31 @@ const Game = () => {
     let isVictory = false;
     let isLose = false;
     isVictory = arrayHiddenWord.every((letter) => guessedLetters.includes(letter));
+
     if (isVictory) {
       setGameData((prev) => ({ ...prev, status: "victory" }));
     }
-    isLose = maxAttempts === gameData.mistakes && animationCompleted;
+    isLose = maxAttempts === gameData.mistakes;
     if (isLose) {
       setGameData((prev) => ({ ...prev, status: "lose" }));
     }
-  }, [guessedLetters, animationCompleted]);
+  }, [guessedLetters]);
 
   useEffect(() => {
     if (gameData.status === "victory") {
       setResultMessage(`Gratuluji ${formData.nickname}! Vyhrál(a) jsi!`);
-      navigate("/Result");
-    } else if (gameData.status === "lose") {
+      navigate("/result");
+    } else if (gameData.status === "lose" && animationCompleted) {
       setResultMessage(`Tentokrát to nevyšlo ${formData.nickname}, budu držet palce příští hru!`);
-      navigate("/Result");
+      navigate("/result");
     }
-  }, [gameData.status]);
+  }, [gameData.status, animationCompleted]);
 
   return (
     <div className="game-layout">
-      <GameInfo guessedLetters={guessedLetters} setAnimationCompleted={setAnimationCompleted} />
+      <GameInfo gallowsProgress={gallowsProgress} setGallowsProgress={setGallowsProgress} guessedLetters={guessedLetters} setAnimationCompleted={setAnimationCompleted} />
       <Solution formatWord={formatWord} guessedLetters={guessedLetters} />
-      <GuessLetters formatWord={formatWord} setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
+      <GuessLetters gallowsProgress={gallowsProgress} formatWord={formatWord} setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />
       <GuessWord formatWord={formatWord} setGuessedLetters={setGuessedLetters} />
     </div>
   );

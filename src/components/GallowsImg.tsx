@@ -1,11 +1,13 @@
 import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../types/types";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 
 type GallowsImgProps = {
   guessedLetters: string[];
   setAnimationCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  gallowsProgress: number;
+  setGallowsProgress: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type HasAnimated = {
@@ -19,9 +21,9 @@ type HasAnimated = {
   legs: boolean;
 };
 
-const GallowsImg = ({ guessedLetters, setAnimationCompleted }: GallowsImgProps) => {
+const GallowsImg = ({ guessedLetters, setAnimationCompleted, gallowsProgress, setGallowsProgress }: GallowsImgProps) => {
   const { maxAttempts, gameData } = useOutletContext<OutletContextType>();
-  const [gallowsProgress, setGallowsProgress] = useState<number>(0);
+
   const hasAnimated = useRef<HasAnimated>({
     base: false,
     pole: false,
