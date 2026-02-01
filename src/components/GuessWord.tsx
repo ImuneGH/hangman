@@ -13,10 +13,11 @@ const GuessWord = ({ setGuessedLetters, formatWord }: GuessWordProps) => {
   const { gameData, setGameData } = useOutletContext<OutletContextType>();
 
   const guessWholeWord = () => {
-    const formattedWord = formatWord(handleWord);
+    const formattedGuessedWord: string = formatWord(handleWord);
+    const formattedHiddenWord: string = formatWord(gameData.hiddenWord);
     setGameData((prev) => ({ ...prev, attempts: prev.attempts + 1 }));
-    if (formattedWord === gameData.hiddenWord) {
-      const victoryLetters = formattedWord.split("");
+    if (formattedGuessedWord === formattedHiddenWord) {
+      const victoryLetters = formattedGuessedWord.split("");
       setGuessedLetters(victoryLetters);
     } else {
       setGameData((prev) => ({ ...prev, status: "lose" }));

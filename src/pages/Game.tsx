@@ -33,7 +33,7 @@ const Game = () => {
     let isVictory = false;
     let isLose = false;
     isVictory = arrayHiddenWord.every((letter) => guessedLetters.includes(letter));
-
+    console.log(isVictory);
     if (isVictory) {
       setGameData((prev) => ({ ...prev, status: "victory" }));
     }
@@ -42,7 +42,7 @@ const Game = () => {
       setGameData((prev) => ({ ...prev, status: "lose" }));
     }
   }, [guessedLetters]);
-
+  console.log(gameData.hiddenWord);
   useEffect(() => {
     if (gameData.status === "victory") {
       setResultMessage(`Gratuluji ${formData.nickname}! Vyhrál(a) jsi!`);
