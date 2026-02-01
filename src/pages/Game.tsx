@@ -55,18 +55,16 @@ const Game = () => {
 
   useEffect(() => {
     const audio: HTMLAudioElement | null = pencilSoundRef.current;
-    console.log(gameData.mistakes);
-    if (!audio || gameData.mistakes === 0) return;
-    if (audio) {
+    if (audio && gameData.mistakes > 0) {
       audio.currentTime = 0;
-      audio.volume = 0.8;
+      audio.volume = 0.6;
       audio.play();
     }
   }, [gameData.mistakes]);
 
   return (
     <div className="game-layout">
-      <audio ref={pencilSoundRef} src="./pencil-sound2.wav" />
+      <audio ref={pencilSoundRef} src="./pencil-sound.wav" />
       <GameInfo gallowsProgress={gallowsProgress} setGallowsProgress={setGallowsProgress} guessedLetters={guessedLetters} setAnimationCompleted={setAnimationCompleted} />
       <Solution formatWord={formatWord} guessedLetters={guessedLetters} />
       <GuessLetters gallowsProgress={gallowsProgress} formatWord={formatWord} setGuessedLetters={setGuessedLetters} guessedLetters={guessedLetters} />

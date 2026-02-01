@@ -215,8 +215,8 @@ const GallowsImg = ({ guessedLetters, setAnimationCompleted, gallowsProgress, se
           stroke="black"
           strokeWidth="2"
           onAnimationStart={() => (hasAnimated.current.legs = true)}
-          strokeDasharray={hasAnimated.current.legs ? 0 : 10}
-          strokeDashoffset={hasAnimated.current.legs ? 0 : 10}
+          strokeDasharray={hasAnimated.current.legs ? 0 : 8}
+          strokeDashoffset={hasAnimated.current.legs ? 0 : 8}
         />
         <motion.line
           variants={gallowsAnimation}
@@ -230,8 +230,8 @@ const GallowsImg = ({ guessedLetters, setAnimationCompleted, gallowsProgress, se
           strokeWidth="2"
           onAnimationStart={() => (hasAnimated.current.legs = true)}
           onAnimationComplete={() => setAnimationCompleted(true)}
-          strokeDasharray={hasAnimated.current.legs ? 0 : 10}
-          strokeDashoffset={hasAnimated.current.legs ? 0 : 10}
+          strokeDasharray={hasAnimated.current.legs ? 0 : 8}
+          strokeDashoffset={hasAnimated.current.legs ? 0 : 8}
         />
       </>
     );
